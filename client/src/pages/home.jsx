@@ -1,3 +1,4 @@
+import Contact from "../components/Home/contact"
 import MainPage from "../components/Home/mainPage"
 import News from "../components/Home/news"
 import RecommendedBooks from "../components/Home/recomended"
@@ -13,6 +14,7 @@ const Home = () => {
         <TopSellers/>
         <RecommendedBooks/>
         <News/>
+        <Contact/>
 
     </>
 
