@@ -1,0 +1,54 @@
+form.right input{
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    outline: none;
+    border-radius: 10px;
+    display: block;
+    width: 90%;
+    padding: 6px;
+    background-color: #eee;
+}
+
+
+form.right label{
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    display: block;
+}
+form.right textarea{
+    background-color: #eee;
+    border: 1px solid #ddd;
+    display: block;
+    resize: none;
+    border-radius: 10px;
+    outline: none;
+    width: 90%;
+    height: 200px;
+    margin-bottom: 10px;
+
+}
+form.right .besides{
+    width: 48%;
+    margin-top: 15px;
+    display: inline-block;
+    
+}
+@media (max-width:767px) {
+    
+    form.right input{
+        width: 100%;
+    }
+    
+}
+@media (max-width:992px) {
+    
+    form.right textarea{
+        width: 100%;
+    }
+
+    .left{
+        margin-bottom: 2rem;
+    }
+    
+}

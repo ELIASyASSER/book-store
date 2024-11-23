@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities{
+.btn-primary{
+       @apply flex items-center bg-primary px-8 py-1  rounded-md text-black font-semibold cursor-pointer 
+       font-secondary hover:bg-transparent hover:text-primary border border-primary 
+       hover:transition
+    }
+
+    .content{
+        @apply w-[90%]  mx-auto px-2 py-3;
+    }
+}
+
+@layer components{
+    .links li{
+        padding: 8px;
+        margin-right: 20px;
+        @apply font-secondary;
+    }
+}
