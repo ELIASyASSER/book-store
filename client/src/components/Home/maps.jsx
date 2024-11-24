@@ -55,21 +55,8 @@ const Maps = () => {
           </Marker>
         </MapContainer>
       ) : (
-        // <p>Loading location...</p>
-        <MapContainer
-          center={mapCenter}
-          zoom={12}
-          style={{ width: '100%', height: '100%' }}
-        >
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          />
-          {/* Marker at user's current location */}
-          <Marker position={mapCenter} icon={locationIcon}>
-            <Popup>Your current location</Popup>
-          </Marker>
-        </MapContainer>
+        <p>Loading location...</p>
+        
       )}
     </div>
   );
