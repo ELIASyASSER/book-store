@@ -30,22 +30,24 @@ return (
     <header className=" flex justify-between items-center content">
         <div className="left flex gap-10 items-center  basis-1/2  relative">
             <HiOutlineBars3CenterLeft onClick={()=>setOpenModal((prev)=>!prev)}  className="w-[28px] h-[22px] cursor-pointer "/>
-                {openModal&&
 
-                <div onMouseLeave={()=>setOpenModal(false)} className="absolute w-40  text-center rounded-md  bg-slate-300   -bottom-32 translate-y-[50%] -left-4  overflow-hidden">
+                            {openModal&&
+                            <div onMouseLeave={()=>setOpenModal(false)} className="absolute w-40  text-center rounded-md  bg-slate-300   -bottom-32 translate-y-[50%] -left-4  overflow-hidden">
 
                                     {
 
                                         modalLinks.map((item,idx)=>{
 
-                                                return <Link key={idx} className="block hover:bg-[#ccc] duration-300 p-2 border-b-2 z-20" onClick={()=>setOpenModal(false)} to={item.   href}>{item.title}
+                                                return <Link key={idx} className="block hover:bg-[#8dc0ff98] duration-300 p-2 border-b-2 z-20" onClick={()=>setOpenModal(false)} to={item.   href}>{item.title}
                                                 </Link>
                                                 })
                                     
                                     }
 
-                            {
-                                <Link  className="block hover:bg-[#ccc] duration-300 p-2 border-b-2 z-20" onClick={()=>setOpenModal(false)} to={"/admin"}>Admin
+
+                            {localStorage.getItem("token")?<Link  className="block hover:bg-[#8dc0ff98] duration-300 p-2 border-b-2 z-20" onClick={()=>setOpenModal(false)} to={"/dashboard"}>Dashboard
+                            </Link>:
+                                <Link  className="block hover:bg-[#8dc0ff98] duration-300 p-2 border-b-2 z-20" onClick={()=>setOpenModal(false)} to={"/admin"}>Admin
                                 </Link>
                             
                             }

@@ -73,12 +73,12 @@ import { MdExitToApp } from 'react-icons/md';
 
       <div className="mb-4">
         <label className="block text-sm font-semibold text-gray-700 mb-2 ">Description</label>
-        <input
+        <textarea
           type="text"
 
           {...register("description",  { required: true,minLength:100,maxLength:1000 })}
-          className=" p-2 border w-full rounded-md focus:outline-none focus:ring focus:border-blue-300"
-          placeholder="Enter Book description"
+          className=" p-2 border w-full rounded-md resize-none h-40 focus:outline-none focus:ring focus:border-blue-300"
+          placeholder="Enter Book description "
         />
       {errors.description && <span className="text-red-600">{errors.description.type =="minLength"?'Please enter 100 characters At Least The Book Description Is Too short':errors.description.type=='maxLength'?'The Book Name Is Too Long maxLength 1000 charachters':''}</span>}
     </div>
