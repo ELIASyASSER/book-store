@@ -59,7 +59,7 @@ return (
                         
                         {
                             currentUser !=null &&
-                            <button  onClick={signOutUser} className="block hover:bg-[#ccc] duration-300 p-2 pr-8 w-full -ml-0" >LogOut</button>
+                            <button  onClick={signOutUser} className="block hover:bg-[#ccc] duration-300 p-2 pr-8 w-full ml-2 " >Log Out</button>
 
                         }
 
