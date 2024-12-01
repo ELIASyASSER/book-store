@@ -11,7 +11,7 @@ const PieChart = () => {
       if(window.innerWidth <600){
         setDir({d:"bottom"})
       }else{
-        setDir({d:"left"})
+        setDir({d:"right"})
 
       }
     }
