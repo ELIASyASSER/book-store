@@ -14,6 +14,10 @@ const ShoppingCart = () => {
   let {oldPrice,newPrice} = cartItems.reduce((prev,curr)=>{
     const {oldPrice,newPrice} = curr;
     prev.newPrice+=newPrice
+    if(oldPrice ==null){
+      prev.oldPrice+=newPrice
+
+    }
     prev.oldPrice+=oldPrice
     return prev
   
@@ -21,9 +25,7 @@ const ShoppingCart = () => {
     oldPrice:0,
     newPrice:0
   })
-
   return (
-
     <>
     <section className="shadow-lg w-9/12 p-3 mx-auto max-md:w-full">
       <div className="header flex  justify-between font-primary items-center mb-10 ">

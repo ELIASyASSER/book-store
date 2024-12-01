@@ -22,7 +22,7 @@ const SingleBook = () => {
     const books = data?.book
     if(!books) return <div className="flex justify-center items-center"><Loading/></div>
     
-    const {title,category,coverImage,description,createdAt,newPrice,oldPrice} = books
+    const {title,category,coverImage,description,createdAt,newPrice,oldPrice,offer} = books
     const date = new Date(createdAt).toLocaleDateString()
     if(isError) return <div>Error Happening while Loading ...</div>
 
@@ -42,9 +42,10 @@ const SingleBook = () => {
                     <p className="text-2xl font-bold mb-8 w-[80%] break-words tracking-wider ">description: <span className="text-gray-500 font-semibold text-xl">{description}</span></p>
 
                     <div className="price flex justify-between flex-row max-sm:flex-col">
-                            <p className="text-2xl font-bold mb-8 w-[80%] break-words tracking-wider ">Old Price: <span className="text-gray-500 font-semibold text-2xl"><del>${oldPrice}</del></span></p>
-
-                            <p className="text-2xl font-bold mb-8 w-[80%] break-words tracking-wider ">New Price: <span className="text-gray-500 font-semibold text-2xl">${newPrice}</span></p>
+                            
+                            {offer && <p className="text-2xl font-bold mb-8 w-[80%] break-words tracking-wider ">Old Price: <span className="text-gray-500 font-semibold text-2xl"><del>${oldPrice}</del></span></p>
+                        }
+                            <p className="text-2xl font-bold mb-8 w-[80%] break-words tracking-wider ">{offer&&"New"} Price: <span className="text-gray-500 font-semibold text-2xl">${newPrice}</span></p>
                     </div>
                     
 

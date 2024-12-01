@@ -6,32 +6,36 @@ import { useGetSingleBookQuery, useUpdateBookMutation} from "../../redux/feature
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { MdExitToApp } from 'react-icons/md';
 import Loading from '../../components/loading';
-
   const UpdateBook = () => {
     const {updatedBookId} = useParams()
     const navigate = useNavigate()
-
     const [updateBook, { isError: isUpdateError, isLoading: isUpdating }] = useUpdateBookMutation();
     const { data, isError: isFetchError, isLoading: isFetching,refetch } = useGetSingleBookQuery(updatedBookId);
-    const { register, setValue,handleSubmit, formState: { errors }, reset } = useForm();
+    const { register, setValue,handleSubmit, formState: { errors }, watch } = useForm();
+    const isOffer = watch("offer")
     useEffect(() => {
       if(data && !isFetching){
-        const {title,description,oldPrice,newPrice,category,trending} = data?.book
+        refetch()
+        const {title,description,oldPrice,newPrice,category,offer} = data?.book
       setValue("title", title); 
       setValue("description", description); 
       setValue("oldPrice", oldPrice); 
       setValue("newPrice",newPrice);
       setValue("category", category);
-      setValue("trending", trending);
+      setValue("offer", offer);
       
     }
 
     }, [data,setValue])
+    useEffect(()=>{
+      if(isUpdateError || isFetchError){
+        navigate("/admin")
+      }
+    },[isUpdateError,isFetchError,navigate])
 
 
     const onSubmit = async(data)=>{
 
-      console.log(data)
       const formData = new FormData();
 
       formData.append('title', data.title);
@@ -39,7 +43,7 @@ import Loading from '../../components/loading';
       formData.append('category', data.category);
       formData.append('oldPrice', data.oldPrice);
       formData.append('newPrice', data.newPrice);
-      formData.append('trending', data.trending || false);  // Default to false if unchecked
+      formData.append('offer', data.offer);  // Default to false if unchecked
       formData.append('cover', data.Image[0]);  // Append the file itself
       
       try {
@@ -52,16 +56,18 @@ import Loading from '../../components/loading';
         timer: 2000
 
       });
-      navigate("/manage-books")
-      refetch()
+      navigate("/manage-books",{state:{updated:true}})
 
+    
+    
     } catch (error) {
-      console.log(error)
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: `Something went wrong  try again !${error.data}`,
+        text: `Something went wrong  try again !`,
     });
+    
+
     }
 
   }
@@ -80,11 +86,11 @@ if(isUpdateError) return <>
 </>
 
 if(isFetchError) return <>
-<div className='flex justify-center items-center text-3x font-bold font-secondary'v>Error while Loading the data please try again later</div>
+<div className='flex justify-center items-center text-3x font-bold font-secondary'>Error while Loading the data please try again later</div>
   {navigate("/manage-books")}
 </>
 
-if(isFetching) return <div className=' h-[99vh]'>
+if(isFetching) return <div className=' h-[99vh] flex justify-center items-center'>
   <Loading/>
 </div>
 
@@ -141,23 +147,26 @@ if(isFetching) return <div className=' h-[99vh]'>
           <label className="inline-flex items-center">
             <input
               type="checkbox"
-              {...register('trending')}
+              {...register('offer')}
               className="rounded text-blue-600 focus:ring focus:ring-offset-2 focus:ring-blue-500"
             />
-            <span className="ml-2 text-sm font-semibold text-gray-700">Trending</span>
+            <span className="ml-2 text-sm font-semibold text-gray-700">Offer</span>
           </label>
         </div>
-      <div className="mb-4">
-        <label className="block text-sm font-semibold text-gray-700 mb-2 ">Old Price</label>
-        <input
-          type="text"
-          {...register("oldPrice",  { required: true })}
-          className=" p-2 border w-full rounded-md focus:outline-none focus:ring focus:border-blue-300"
-          placeholder="Enter Price Before Discount"
-        />
-    </div>
+      {
+          isOffer&&  <div className="mb-4">
+          <label className="block text-sm font-semibold text-gray-700 mb-2 ">Old Price</label>
+          <input
+            type="text"
+            {...register("oldPrice",  { required: true })}
+            className=" p-2 border w-full rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            placeholder="Enter Price Before Discount"
+          />
+          </div>
+      }
+
     <div className="mb-4">
-        <label className="block text-sm font-semibold text-gray-700  mb-2 ">New Price</label>
+        <label className="block text-sm font-semibold text-gray-700  mb-2 ">{isOffer&&"New"} Price</label>
         <input
           type="text"
           {...register("newPrice",  { required: true })}
@@ -175,9 +184,9 @@ if(isFetching) return <div className=' h-[99vh]'>
 
         {/* Submit Button */}
 
-        <button type="submit" className="w-full py-2 bg-green-500 text-white font-bold rounded-md">
+            <button type="submit" className="w-full py-2 bg-green-500 text-white font-bold rounded-md">
 
-              {isUpdating?<span className="">Updating ... </span>:<span>Update Book</span>} 
+              {isUpdating?<span className="cursor-no-drop">Updating ... </span>:<span>Update Book</span>} 
         </button>
       </form>
     </div>

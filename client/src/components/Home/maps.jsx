@@ -7,25 +7,37 @@ const Maps = () => {
   const [coordinates, setCoordinates] = useState({
     latitude: null,
     longitude: null,
+
+
   });
-  
+
+
   const [mapCenter, setMapCenter] = useState([37.7577, -122.4376]); // Default to a location (San Francisco)
+
 
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
+
           setCoordinates({ latitude, longitude });
           setMapCenter([latitude, longitude]); // Update map center to current location
+
         },
+
         (error) => {
+
           console.error('Error fetching location:', error);
+
         }
       );
     } else {
+
       console.error('Geolocation is not supported by this browser.');
+
     }
+
   }, []);
 
   const locationIcon = new Icon({

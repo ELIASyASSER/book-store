@@ -13,7 +13,6 @@ import Loading from '../loading';
 const TopSellers = () => {
     
     const {data:books,isError,isLoading} = useGetAllBooksQuery()
-    
     const categories = ["choose a genre","fiction","business","horror","adventure"]
     const [selectedCategory,setSelectedCategory] = useState("choose a genre")
     const filterdBooks = selectedCategory =="choose a genre"?books:books?.filter((book)=>book.category == selectedCategory)
@@ -42,6 +41,7 @@ const TopSellers = () => {
     navigation={{
         nextEl: '.custom-button-next',
         prevEl: '.custom-button-prev',
+
     }}
     loop={false}
     breakpoints={{
@@ -67,11 +67,12 @@ const TopSellers = () => {
         <SwiperSlide key={book._id} >
             <CardBook book={book}/>
         </SwiperSlide>
-            ))}
+        ))}
+        {!books || books.length<1 &&<div className='text-red-600 text-xl font-bold'>No books Added Yet</div>}
 
     <div className="custom-button-prev">‹</div>
     <div className="custom-button-next">›</div>
-    </Swiper>
+        </Swiper>
     </section>
   )
 }

@@ -25,7 +25,6 @@ const AdminLogin = () => {
             password:data?.password,
             role:"admin",
             subscribe:isSubscribe
-
           }
 
         try {

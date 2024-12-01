@@ -1,6 +1,9 @@
 import React from 'react';
 
 const Contact = () => {
+  const sub = (e)=>{
+    e.preventDefault()
+  }
   return (
     <div className="contact py-16 bg-gray-50">
       <div className="container mx-auto px-6 max-w-7xl">
@@ -15,7 +18,7 @@ const Contact = () => {
         {/* Content */}
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between space-y-12 md:space-y-0 md:space-x-12">
           {/* Contact Form */}
-          <form className="w-full md:w-2/3 bg-white p-8 shadow-lg rounded-lg">
+          <form className="w-full md:w-2/3 bg-white p-8 shadow-lg rounded-lg" onSubmit={sub}>
             <div className="space-y-6">
               <input
                 type="text"
@@ -32,7 +35,7 @@ const Contact = () => {
               <textarea
                 name="message"
                 placeholder="Your Message"
-                className="w-full border-b-2 border-gray-300 py-4 px-3 h-40 focus:border-blue-500 focus:outline-none"
+                className="w-full resize-none border-b-2 border-gray-300 py-4 px-3 h-40 focus:border-blue-500 focus:outline-none"
               />
               <button
                 type="submit"

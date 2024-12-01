@@ -3,22 +3,24 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import {useCreateBookMutation} from "../../redux/features/bookApi"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 import { MdExitToApp } from 'react-icons/md';
   const AddBook = () => {
     const [createBook,{isError,isLoading}] = useCreateBookMutation()
-    const { register, handleSubmit, formState: { errors }, reset } = useForm();
-    
+    const { register, handleSubmit, formState: { errors }, reset ,watch} = useForm();
+    const navigate = useNavigate()
+    const isOffer = watch("offer")
     const onSubmit = async(data)=>{
       const formData = new FormData();
       formData.append('title', data.title);
       formData.append('description', data.description);
       formData.append('category', data.category);
-      formData.append('oldPrice', data.oldPrice);
+      formData.append('oldPrice', data?.oldPrice);
       formData.append('newPrice', data.newPrice);
-      formData.append('trending', data.trending || false);  // Default to false if unchecked
+      formData.append('offer', data.offer);  // Default to false if unchecked
       formData.append('cover', data.Image[0]);  // Append the file itself
-
+      
       try {
       await createBook(formData).unwrap()
       
@@ -33,13 +35,20 @@ import { MdExitToApp } from 'react-icons/md';
       reset()
 
     } catch (error) {
-      console.log(error)
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: `Something went wrong  try again !${error.data}`,
+        text: `Something went wrong  try again `,
     });
-    }
+    if(error.data == 'Invalid Credentials error with the token'){
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `Please Log In As Admin First`,
+    });
+    navigate("/admin")
+    
+  }}
 
   }
   const options=[
@@ -91,7 +100,7 @@ import { MdExitToApp } from 'react-icons/md';
         className="w-full p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
       >
         {options.map((option) => (
-          <option key={option.value} value={option.value}>
+          <option key={option.value} valshue={option.value}>
             {option.label}
           </option>
         ))}
@@ -104,13 +113,13 @@ import { MdExitToApp } from 'react-icons/md';
           <label className="inline-flex items-center">
             <input
               type="checkbox"
-              {...register('trending')}
+              {...register('offer')}
               className="rounded text-blue-600 focus:ring focus:ring-offset-2 focus:ring-blue-500"
             />
-            <span className="ml-2 text-sm font-semibold text-gray-700">Trending</span>
+            <span className="ml-2 text-sm font-semibold text-gray-700">Offer</span>
           </label>
         </div>
-      <div className="mb-4">
+        {isOffer&&<div className="mb-4">
         <label className="block text-sm font-semibold text-gray-700 mb-2 ">Old Price</label>
         <input
           type="text"
@@ -118,15 +127,16 @@ import { MdExitToApp } from 'react-icons/md';
           className=" p-2 border w-full rounded-md focus:outline-none focus:ring focus:border-blue-300"
           placeholder="Enter Price Before Discount"
         />
-    </div>
+    </div>}
     <div className="mb-4">
-        <label className="block text-sm font-semibold text-gray-700  mb-2 ">New Price</label>
+        <label className="block text-sm font-semibold text-gray-700  mb-2 ">{isOffer&&'New'} Price</label>
         <input
           type="text"
           {...register("newPrice",  { required: true })}
           className=" p-2 border w-full rounded-md focus:outline-none focus:ring focus:border-blue-300"
           placeholder="Enter Price Of Book"
         />
+
     </div>
 
         {/* Cover Image Upload */}

@@ -4,6 +4,7 @@ import { auth } from '../firebase/main.config';
 import { GoogleAuthProvider } from "firebase/auth";
 import axios from "axios"
 import { data } from 'autoprefixer';
+import Loading from '../components/loading';
 const SERVER_URL = import.meta.env.VITE_SERVER_URL
 const AuthContext = createContext()
 const provider = new GoogleAuthProvider();
@@ -12,7 +13,7 @@ export const AuthProvider = ({children})=>{
     const [isSubscribe,setIsSubscribe] = useState(true)
     const[currentUser,setCurrentUser] = useState(null)
     const [profileImg,setProfileImg] = useState(null)
-    const vvv =883
+
     const registerUser = async(email,password)=>{
         return await createUserWithEmailAndPassword(auth, email, password)
     }
@@ -38,18 +39,12 @@ export const AuthProvider = ({children})=>{
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             setCurrentUser(user)
             setLoading(false)
-            if (user) {
-                const {displayName,email,uid,photoURL} = user;
-                const userData = {
-                    displayName,
-                    email,
-                    uid,
-                    photoURL
-                }
-            }
+            
         });
         return ()=>unsubscribe()
     },[])
+
+    
 
 
     const userDetails = ()=>{
@@ -58,8 +53,10 @@ export const AuthProvider = ({children})=>{
         if (user !== null) {
             // The user object has basic properties such as display name, email, etc.
             // const displayName = user.displayName;
+
             const email = user.email;
             const photoURL = user.photoURL;
+
             // const emailVerified = user.emailVerified;
             // const uid = user.uid;
             // console.log(displayName)
@@ -72,24 +69,25 @@ export const AuthProvider = ({children})=>{
         // Check if the URL is present before uploading
 
         if (!urlImg) {
-            console.log("No image URL found.");
+            alert("No image URL found.")
             return;
         }
 
         try {
 
             const resp = await axios.post("http://localhost:4000/uploadImg", { urlImg }, {
+
                 headers: {
                     "Content-Type": "application/json", // Corrected header content type
                 },
                 timeout:5000
             });
-            console.log('Uploaded successfully');
+
             setProfileImg(`${SERVER_URL}${resp?.data?.url}`)
-        } catch (error) {
+        }
 
-            console.error("Error uploading image:", error);
-
+        catch (error) {
+            console.log(error)
             alert("Something went wrong while uploading the image");
         }
 
@@ -117,7 +115,6 @@ export const AuthProvider = ({children})=>{
         isSubscribe,
         setIsSubscribe,
         profileImg,
-        vvv
     }
     return <AuthContext.Provider value={value}>
         {children}

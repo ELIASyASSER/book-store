@@ -1,14 +1,28 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./manageBooks.css"
 import { useGetAllBooksQuery,useDeleteBookMutation} from "../../redux/features/bookApi";
 import Swal from "sweetalert2";
 import { MdExitToApp } from "react-icons/md";
 import Loading from "../../components/loading";
+import { useEffect } from "react";
 const ManageBooks = () => {
     const [deleteBook] = useDeleteBookMutation()
     const {data,isError,isLoading,isFetching,refetch} = useGetAllBooksQuery()
-    if(isLoading || isFetching)return <Loading/>
-    if(isError)return <div>Error Happen while fetching</div>
+    const navigate = useNavigate()
+    const location = useLocation()
+        useEffect(() => {
+            if(location.state?.updated){
+              refetch()
+            }
+
+          }, [location.state])
+
+
+
+    if(isLoading || isFetching)return <div className="flex justify-center items-center h-[80vh] "><Loading/></div>
+    if(isError)return <div className="flex justify-center items-center h-[80vh]  font-primary flex-col gap-20">
+      <h1 className="text-5xl">Error Happen while fetching </h1>
+      <Link to={"/"} className="bg-purple-500 text-white text-4xl p-6 rounded-lg hover:bg-purple-800">Home</Link></div>
     if(!data || data.length ==0) return <div className="flex justify-start items-center  w-10/12 shadow-lg p-4 mx-auto font-primary text-3xl h-[90vh] flex-col">
         <h1 className="mb-8"> No Books Found ...</h1>
         <div>
@@ -42,9 +56,19 @@ const ManageBooks = () => {
                         Swal.fire({
                             icon: "error",
                             title: "Oops...",
-                            text: "Something went wrong! While Deleting",
+                            text: `Something went wrong! While Deleting ${error.data}`,
+                            
                         });
                         
+                        if(error.data =='Invalid Credentials error with the token'){
+                          Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: ` something went wrong please log in as admin first `,
+                            
+                        });
+                          navigate("/admin")
+                        }
                     }
                 }
               });

@@ -90,6 +90,9 @@ html{
     color:gray ;
     font-size: 16px;
     margin-left: 8px;
+    word-wrap: break-word;
+    max-width: 94%;
+    display: block;
 }
 .billDetails:not(:last-of-type){
     margin-bottom: 2rem;
