@@ -17,5 +17,8 @@ const authenticateAdmin = (req,res,next)=>{
     // here use this middleware before the routes you wnat them authenticated in our expamle i will use them when creating updating deleting a book as admin only can do this operations
 
 
+
+
+
 }
 export default authenticateAdmin

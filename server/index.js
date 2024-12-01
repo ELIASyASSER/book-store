@@ -40,21 +40,24 @@ const downladProfileImg = ()=>{
         if (!req.body || !req.body.urlImg) {
             next("url of the image not found ")
         }
+
         const imgHash = generateImgHash(urlImg)
         const fileName = `${imgHash}.png`
         const filePath = path.join(__dirname,'uploads',fileName)
         try {
             const response = await axios({
+
                 url:urlImg,
                 method:"GET",
                 responseType:"stream"
                 
             })
-            const writer = fs.createWriteStream(filePath)
-            response.data.pipe(writer)
-            
-            writer.on("finish",()=>{
 
+            const writer = fs.createWriteStream(filePath)
+
+            response.data.pipe(writer)
+
+            writer.on("finish",()=>{
             res.status(200).json({msg:"Image saved Successfully",url:`/uploads/${fileName}`})
 
         })
@@ -65,7 +68,6 @@ const downladProfileImg = ()=>{
             
         })
     } catch (error) {
-        console.log(error)
         return next(error)
     }
 })

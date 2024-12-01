@@ -41,7 +41,6 @@ const updateBook = async(req,res,next)=>{
             ...req.body,
             coverImage:req.file.path
         }
-        console.log(updatedData,'fr')
         const updatedBook = await bookModel.findByIdAndUpdate(id,updatedData,{new:true,runValidators:true})
         
         if(!updatedBook){

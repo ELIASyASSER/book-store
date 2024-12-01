@@ -24,8 +24,9 @@ const bookSchema = new mongoose.Schema({
         required:[true,"please enter book category"]
     },
 
-    trending:{
-        type:Boolean
+    offer:{
+        type:Boolean,
+        default:false
     },
 
     coverImage:{
@@ -35,12 +36,11 @@ const bookSchema = new mongoose.Schema({
 
     oldPrice:{
         type:Number,
-        required:[true,"please enter the old price"]
     },
 
     newPrice:{
         type:Number,
-        required:[true,"please enter the new price"]
+        required:[true,"please enter the  price"]
     },
     createdAt:{
         type:Date,

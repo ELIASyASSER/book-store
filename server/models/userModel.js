@@ -22,6 +22,7 @@ const userSchema = new mongoose.Schema({
     subscribe:{
         type:Boolean,
         default:false
+
     }
 })
 
