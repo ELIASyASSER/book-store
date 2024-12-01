@@ -35,10 +35,10 @@ return (
         {data.map((item,idx)=>{
             const {orderData }= item
             const date = new Date(item?.createdAt).toLocaleDateString()
-            return <div key={idx} className="mb-8"> 
+            return <div key={idx} className="mb-8 overflow-hidden"> 
                 <div>
 
-                    <div className='font-bold rounded-lg mb-4 bg-black p-2 text-white  '>#############</div>
+                    <div className='font-bold rounded-lg mb-4 bg-black p-2 text-white   '>#############</div>
                     <p className='mb-8'>fullName: <span>{item?.fullName}</span></p>
                     <p className='mb-8'>Email: <span>{item?.email}</span></p>
                     <p className='mb-8'>Total Price $<span>{item?.price}</span></p>
@@ -66,7 +66,7 @@ return (
                 })}
 
                 <div className='block bg-sky-400 text-center md:text-2xl cursor-pointer rounded-md p-2 ' role="button" onClick={copyToClipboard}>order Id: 
-                    <i className='text-white inline-block tracking-widest ml-3' ref={orderId}>#{item?._id}</i>
+                    <i className='text-white inline-block tracking-widest ml-3 ' ref={orderId}>#{item?._id}</i>
                     {success&&<p className='text-sm  text-green-800'>Copied To ClipBoard Successfully </p>}
                 </div>
             </div>

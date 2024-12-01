@@ -16,7 +16,6 @@ const TopSellers = () => {
     const categories = ["choose a genre","fiction","business","horror","adventure"]
     const [selectedCategory,setSelectedCategory] = useState("choose a genre")
     const filterdBooks = selectedCategory =="choose a genre"?books:books?.filter((book)=>book.category == selectedCategory)
-
     if(isLoading)return <Loading/>
     if(isError)return <div>Error Happening while Fetching Data</div>
     
@@ -68,7 +67,7 @@ const TopSellers = () => {
             <CardBook book={book}/>
         </SwiperSlide>
         ))}
-        {!books || books.length<1 &&<div className='text-red-600 text-xl font-bold'>No books Added Yet</div>}
+        {!books || books.length<1 ||filterdBooks.length <1 &&<div className='text-red-600 text-xl font-bold'>No books Added Yet in This Field</div>}
 
     <div className="custom-button-prev">‹</div>
     <div className="custom-button-next">›</div>

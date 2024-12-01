@@ -5,15 +5,19 @@ html{
 }
 
 ::-webkit-scrollbar-thumb{
-    background-color: gold;
+    background-color: rgb(60, 52, 6);
+    border-radius: 30px;
+}
+
+::-webkit-scrollbar{
+    width: 20px;
 }
 ::-webkit-scrollbar-track{
-    width: 18px;
-    background-color: gold;
+    background-color: rgb(213, 210, 195);
     
 }
 ::-webkit-scrollbar-thumb:hover{
-    background-color: blue;
+    background-color: rgb(83, 45, 5);
 }
 .swiper{
     /* background-color: black; */
@@ -26,6 +30,7 @@ html{
     justify-content: center;
     align-items: center;
 }
+
 .swiper-slide img{
     display: block;
     width: 100%;

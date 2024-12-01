@@ -1,9 +1,23 @@
 
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement, CategoryScale } from 'chart.js';
+import { useEffect, useState } from 'react';
 ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale);
 
 const PieChart = () => {
+  const [dir,setDir] = useState({d:"left"})
+  useEffect(()=>{
+    const handleRes = ()=>{
+      if(window.innerWidth <600){
+        setDir({d:"bottom"})
+      }else{
+        setDir({d:"left"})
+
+      }
+    }
+  window.addEventListener("resize",handleRes)
+    return ()=>window.removeEventListener("resize",handleRes)
+},[dir])
 const data = {
     labels: ['Business', 'fiction', 'horror','adventure'], // Labels for segments
     datasets: [
@@ -26,12 +40,11 @@ const data = {
       },
     ],
 };
-
 const options = {
     responsive: true, // Makes the chart responsive
     plugins: {
       legend: {
-        position: 'right', // Position of the legend
+        position:dir.d, // Position of the legend
         onClick: (e, legendItem, legend) => {
           },
       },
@@ -44,7 +57,7 @@ const options = {
 };
 
     return (
-        <div className='w-80 h-80'>
+        <div className='w-80 h-80 '>
         <Pie data={data} options={options} width={50} height={50} />
         </div>
 );

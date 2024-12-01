@@ -25,8 +25,8 @@ return (
 
         </div>
         <SquaresData/>
-        <div className='w-[85%] max-md:w-full mx-auto bg-white my-4 rounded-md p-4'>
-            <h1 className='font-semibold text-2xl ml-6 '>Book Categories</h1>
+        <div className='w-[85%] max-md:w-full mx-auto bg-white  my-4 rounded-md p-4 flex flex-col  justify-start '>
+            <h1 className='font-semibold text-2xl ml-6 mb-10'>Book Categories</h1>
             <PieChart/>
         </div>
 

@@ -1,3 +1,4 @@
+import { MdExitToApp } from "react-icons/md";
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
@@ -59,8 +60,11 @@ const AdminLogin = () => {
 }
     if(isLoading)return <Loading/>
   return (
-    <section className='h-screen flex justify-center items-center'>
+    <section className='h-screen flex justify-center items-center '>
         <div className="font-secondary login shadow-2xl md:w-7/12 mx-auto w-full rounded-md p-4 ">
+      <Link className=' bg-blue-600 p-3 mb-4 text-white text-xl font-bold  w-fit flex justify-self-end items-center rounded-md hover:bg-purple-800 transition' to="/">
+      <MdExitToApp className='size-8'/>
+      </Link>
       <h1 className="text-2xl font-semibold ml-4 mb-4">Log In As Admin </h1>
         <form className="center p-4" onSubmit={handleSubmit(onSubmit)}>
             <label htmlFor="username"  className="font-semibold text-xl">Username</label>

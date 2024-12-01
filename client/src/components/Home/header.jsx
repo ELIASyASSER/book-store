@@ -28,12 +28,12 @@ const Header = () => {
 
 return (
 
-    <header className=" flex justify-between items-center content">
+    <header className=" flex justify-between items-center content flex-wrap ">
         <div className="left flex gap-10 items-center  basis-1/2  relative">
             <HiOutlineBars3CenterLeft onClick={()=>setOpenModal((prev)=>!prev)}  className="w-[28px] h-[22px] cursor-pointer "/>
 
                             {openModal&&
-                            <div onMouseLeave={()=>setOpenModal(false)} className="absolute w-40  text-center rounded-md  bg-slate-300   -bottom-32 translate-y-[50%] -left-4  overflow-hidden">
+                            <div onMouseLeave={()=>setOpenModal(false)} className="absolute w-40  text-center rounded-md  bg-slate-300   -bottom-24 translate-y-[50%] -left-4  overflow-hidden">
 
                                     {
 
@@ -66,7 +66,7 @@ return (
                             
                 </div>
                 }
-            <form className="w-[16rem] max-sm:w-[12rem] bg-[#EAEAEA] px-2 py-1 rounded-md flex items-center gap-3">
+            <form className="w-[16rem] max-sm:w-[12rem] bg-[#EAEAEA] px-2 py-1 rounded-md flex items-center gap-3 ">
                 <FaSearch className="inline-block cursor-pointer"/>
                 <input type="text"  className="bg-transparent w-[90%] outline-none" placeholder="What Are You Looking For"/>
             </form>

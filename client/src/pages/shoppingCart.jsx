@@ -70,8 +70,7 @@ const ShoppingCart = () => {
       {
         cartItems.length>0&&
       <div className="footer font-primary mt-4 ">
-        <div className='flex justify-between items-center'>
-
+        <div className='flex justify-between items-center flex-wrap'>
           <strong className='text-2xl font-mono'>Total Price:</strong>
           <div className="price">
             <del className='mr-6 tracking-widest  text-[20px] oldPrice'>${oldPrice.toFixed(2)}</del>

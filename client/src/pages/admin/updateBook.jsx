@@ -11,19 +11,21 @@ import Loading from '../../components/loading';
     const navigate = useNavigate()
     const [updateBook, { isError: isUpdateError, isLoading: isUpdating }] = useUpdateBookMutation();
     const { data, isError: isFetchError, isLoading: isFetching,refetch } = useGetSingleBookQuery(updatedBookId);
+    const [currentImg,setCurrentImg] = useState("")
     const { register, setValue,handleSubmit, formState: { errors }, watch } = useForm();
     const isOffer = watch("offer")
     useEffect(() => {
       if(data && !isFetching){
         refetch()
-        const {title,description,oldPrice,newPrice,category,offer} = data?.book
+        const {title,description,oldPrice,newPrice,category,offer,coverImage} = data?.book
       setValue("title", title); 
       setValue("description", description); 
       setValue("oldPrice", oldPrice); 
       setValue("newPrice",newPrice);
       setValue("category", category);
       setValue("offer", offer);
-      
+      setCurrentImg(coverImage);
+      setValue("Img",coverImage)
     }
 
     }, [data,setValue])
@@ -152,8 +154,10 @@ if(isFetching) return <div className=' h-[99vh] flex justify-center items-center
             />
             <span className="ml-2 text-sm font-semibold text-gray-700">Offer</span>
           </label>
+
         </div>
-      {
+
+        {
           isOffer&&  <div className="mb-4">
           <label className="block text-sm font-semibold text-gray-700 mb-2 ">Old Price</label>
           <input
@@ -163,7 +167,7 @@ if(isFetching) return <div className=' h-[99vh] flex justify-center items-center
             placeholder="Enter Price Before Discount"
           />
           </div>
-      }
+        } 
 
     <div className="mb-4">
         <label className="block text-sm font-semibold text-gray-700  mb-2 ">{isOffer&&"New"} Price</label>
@@ -179,8 +183,20 @@ if(isFetching) return <div className=' h-[99vh] flex justify-center items-center
         <div className="mb-4 ">
           <label className="block text-sm font-semibold text-gray-700 mb-4 " htmlFor='file' >Book Cover: </label>
           <input  type="file" accept="image/*"  className="mb-2 w-full "  id='file' {...register("Image",{required:true})}/>
-            {errors.Image && <span className="text-red-600">{errors.Image.type =="required"&&"please choose image for the book"}</span>}
+            {errors.Image && <span className="text-red-600">{errors.Image.type == "required"&&"please choose image for the book"}</span>}
         </div>
+        
+        <div className="mb-4">
+        <label className="block text-sm font-semibold text-gray-700 mb-2">Current Book Cover:</label>
+        {currentImg && (
+        <img
+          src={currentImg}  // Display current cover image
+          alt="Current Cover"
+          className="w-32 h-32 object-cover mb-2 rounded-md"
+        />
+      )}
+</div>
+
 
         {/* Submit Button */}
 
