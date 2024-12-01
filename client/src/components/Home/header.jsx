@@ -14,14 +14,15 @@ const Header = () => {
     const [openModal,setOpenModal] = useState(false)
     const {signOutUser,currentUser,profileImg} = useAuth()    
     const {cartItems} = useSelector((state)=>state.shopping)
-
     const userImg = profileImg || avatar
 
     const modalLinks = [
         {href:"/",title:"Home"},
+        {href:`/getOrder/${currentUser?.email}`,title:"Orders"},
+    ]
+    const signingLinks = [
         {href:"/register",title:"Register"},
         {href:"/login",title:"Log In"},
-        {href:`/getOrder/${currentUser?.email}`,title:"Orders"},
     ]
 
 
@@ -37,13 +38,17 @@ return (
                                     {
 
                                         modalLinks.map((item,idx)=>{
-
-                                                return <Link key={idx} className="block hover:bg-[#8dc0ff98] duration-300 p-2 border-b-2 z-20" onClick={()=>setOpenModal(false)} to={item.   href}>{item.title}
+                                                return <Link key={idx} className="block hover:bg-[#8dc0ff98] duration-300 p-2 border-b-2 z-20" onClick={()=>setOpenModal(false)} to={item.href}>{item.title}
                                                 </Link>
                                                 })
                                     
                                     }
-
+                                    {
+                                        currentUser==null&&signingLinks.map((item,idx)=>{
+                                            return <Link key={idx} className="block hover:bg-[#8dc0ff98] duration-300 p-2 border-b-2 z-20" onClick={()=>setOpenModal(false)} to={item.href}>{item.title}
+                                            </Link>
+                                            })
+                                    }
 
                             {localStorage.getItem("token")?<Link  className="block hover:bg-[#8dc0ff98] duration-300 p-2 border-b-2 z-20" onClick={()=>setOpenModal(false)} to={"/dashboard"}>Dashboard
                             </Link>:
@@ -51,8 +56,13 @@ return (
                                 </Link>
                             
                             }
-
+                        
+                        {
+                            currentUser !=null &&
                             <button  onClick={signOutUser} className="block hover:bg-[#ccc] duration-300 p-2 pr-8 w-full -ml-0" >LogOut</button>
+
+                        }
+
                             
                 </div>
                 }
