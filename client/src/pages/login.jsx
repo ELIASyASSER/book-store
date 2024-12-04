@@ -8,9 +8,9 @@ const Login = () => {
 
   const navigate = useNavigate()
   const [message,setMessage] = useState("")
-  const {loginUser,signInWithGoogle} = useAuth()
+  const {loginUser,signInWithGoogle,loading} = useAuth()
   const location = useLocation()
-  const from = location.state?.from?.pathname ||"/" 
+  const from = location.state?.from?.pathname || "/" 
   const {
     register,
     handleSubmit,
@@ -27,6 +27,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500
           });
+          
           navigate(from,{replace:true})
 
       } catch (error) {
@@ -53,7 +54,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500
           });
-
+          
         navigate(from,{replace:true})
 
       } catch (error) {
@@ -68,7 +69,6 @@ const Login = () => {
         }
       }
     }
-
   return (
     <section className="font-secondary login shadow-2xl md:w-7/12 mx-auto w-full rounded-md p-4">
       <h1 className="text-2xl font-semibold ml-4 mb-4">Please Login</h1>

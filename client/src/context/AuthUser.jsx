@@ -1,9 +1,8 @@
 import { createContext,useContext,useEffect,useState} from 'react'
-import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword, signInWithPopup, signOut, onAuthStateChanged} from "firebase/auth";
+import {  createUserWithEmailAndPassword,signInWithEmailAndPassword, signInWithPopup, signOut, onAuthStateChanged} from "firebase/auth";
 import { auth } from '../firebase/main.config';
 import { GoogleAuthProvider } from "firebase/auth";
 import axios from "axios"
-import { data } from 'autoprefixer';
 import Loading from '../components/loading';
 const SERVER_URL = import.meta.env.VITE_SERVER_URL
 const AuthContext = createContext()
@@ -38,11 +37,11 @@ export const AuthProvider = ({children})=>{
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             setCurrentUser(user)
+            setLoading(false)
         });
         return ()=>unsubscribe()
     },[])
 
-    
 
 
     const userDetails = ()=>{
@@ -113,6 +112,7 @@ export const AuthProvider = ({children})=>{
         isSubscribe,
         setIsSubscribe,
         profileImg,
+        loading
     }
     return <AuthContext.Provider value={value}>
         {children}

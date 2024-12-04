@@ -1,20 +1,19 @@
 import React, {  useRef, useState } from 'react'
 import { useGetOrderByEmailQuery } from '../redux/features/orderApi'
-import { useParams } from 'react-router-dom'
-import { getImgUrl } from '../utils/getImgUrl'
-import { Link } from 'react-router-dom'
+import { useParams,Link } from 'react-router-dom'
 import Loading from '../components/loading'
 
 const OrderPage = () => {
     const {orderEmail} = useParams()
     const {isError,isLoading,data} = useGetOrderByEmailQuery(orderEmail)
-
     const [success,setSuccess] = useState(false)
     const orderId = useRef(null)
 
     if(isError) return <div>Error happen please try again later</div>
     if(isLoading)return <div className="flex justify-center items-center h-[80vh] "><Loading/></div>
     if(!data || data?.length <1 || data ==null) return <div className='text-center '>
+    
+    
         <p className='mb-8 lg:text-4xl text-2xl font-semibold'>You Dont have any orders yet</p>
         <Link to={'/'} className='bg-violet-600 text-white font-bold px-4 py-2 rounded-md block w-full  text-xl'> Continue Shopping</Link>
     </div>
@@ -28,15 +27,16 @@ const OrderPage = () => {
     }
 
 
-return (
-        <>
-        <h1 className='text-4xl mb-4  font-mono font-semibold lg:w-11/12 lg:mx-auto w-full '>Your Orders:-</h1>
-    <main className='bg-slate-100 p-4  px-2  rounded-md font-primary lg:w-11/12 w-full lg:mx-auto orders '>
-        {data.map((item,idx)=>{
-            const {orderData }= item
-            const date = new Date(item?.createdAt).toLocaleDateString()
-            return <div key={idx} className="mb-8 overflow-hidden"> 
-                <div>
+    return (
+            <>
+            <h1 className='text-4xl mb-4  font-mono font-semibold lg:w-11/12 lg:mx-auto w-full '>Your Orders:-</h1>
+        <main className='bg-slate-100 p-4  px-2  rounded-md font-primary lg:w-11/12 w-full lg:mx-auto orders '>
+
+            {data.map((item,idx)=>{
+                const {orderData }= item
+                const date = new Date(item?.createdAt).toLocaleDateString()
+                    return <div key={idx} className="mb-8 overflow-hidden"> 
+                    <div>
 
                     <div className='font-bold rounded-lg mb-4 bg-black p-2 text-white   '>#############</div>
                     <p className='mb-8'>fullName: <span>{item?.fullName}</span></p>
