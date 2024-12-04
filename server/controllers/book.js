@@ -39,9 +39,12 @@ const updateBook = async(req,res,next)=>{
         const {id} = req.params
         const updatedData = {
             ...req.body,
-            coverImage:req.file.path
         }
-        const updatedBook = await bookModel.findByIdAndUpdate(id,updatedData,{new:true,runValidators:true})
+        if(req.file){
+            updatedData.coverImage = req.file.path
+        }
+        const updatedBook = await bookModel.findOneAndUpdate({_id:id},updatedData,{new:true,runValidators:true})
+        // {id:id,updatedData},{}
         
         if(!updatedBook){
             return next()

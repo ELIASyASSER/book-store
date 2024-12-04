@@ -7,12 +7,12 @@ const DashBoardProtection = ({children}) => {
     
     useEffect(()=>{
         
+        const token = localStorage.getItem("ThE_SeCrEt_ToKeN")
         const expiration = localStorage.getItem("expiredToken")
-        const token = localStorage.getItem("token")
 
         if(expiration && token && new Date().getTime() > expiration)
             {
-                localStorage.removeItem("token")
+                localStorage.removeItem("ThE_SeCrEt_ToKeN")
                 localStorage.removeItem("expiredToken")
 
                 alert("Your Session has been expired please log in as admin again  press ok to redirect you")
@@ -21,7 +21,8 @@ const DashBoardProtection = ({children}) => {
 
     },[navigate])
 
-    const token = localStorage.getItem("token")
+    // const token = localStorage.getItem("token")
+    const token = localStorage.getItem("ThE_SeCrEt_ToKeN")
 
     return token?children:<Navigate to={'/admin'}/>
 

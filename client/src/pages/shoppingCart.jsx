@@ -14,7 +14,7 @@ const ShoppingCart = () => {
   let {oldPrice,newPrice} = cartItems.reduce((prev,curr)=>{
     const {oldPrice,newPrice} = curr;
     prev.newPrice+=newPrice
-    if(oldPrice ==null){
+    if(oldPrice ==0){
       prev.oldPrice+=newPrice
 
     }

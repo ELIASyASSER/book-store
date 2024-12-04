@@ -4,7 +4,7 @@ const serverUrl = import.meta.env.VITE_SERVER_URL
 export const bookApi = createApi({
     reducerPath:"bookApi",
     baseQuery:fetchBaseQuery({baseUrl:`${serverUrl}/api`,credentials:"include",prepareHeaders:(Headers)=>{
-        const token = localStorage.getItem("token")
+        const token = localStorage.getItem("ThE_SeCrEt_ToKeN")
         if(token){
             Headers.set("Authorization",`Bearer ${token}`)
         }

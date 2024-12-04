@@ -36,6 +36,8 @@ const bookSchema = new mongoose.Schema({
 
     oldPrice:{
         type:Number,
+        default:0
+
     },
 
     newPrice:{
@@ -46,9 +48,16 @@ const bookSchema = new mongoose.Schema({
         type:Date,
         default:Date.now
     }
+    ,
 
 
 },{timestamps:true})
-
+bookSchema.pre("findOneAndUpdate",function (next) {
+    if(!this.offer){
+        this.oldPrice = 0;
+    }
+    next()
+    
+})
 const bookModel = mongoose.model("Book",bookSchema)
 export default bookModel

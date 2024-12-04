@@ -16,7 +16,7 @@ import { MdExitToApp } from 'react-icons/md';
       formData.append('title', data.title);
       formData.append('description', data.description);
       formData.append('category', data.category);
-      formData.append('oldPrice', data?.oldPrice);
+      formData.append('oldPrice', data?.oldPrice||0);
       formData.append('newPrice', data.newPrice);
       formData.append('offer', data.offer);  // Default to false if unchecked
       formData.append('cover', data.Image[0]);  // Append the file itself
@@ -148,7 +148,7 @@ import { MdExitToApp } from 'react-icons/md';
 
         {/* Submit Button */}
 
-        <button type="submit" className="w-full py-2 bg-green-500 text-white font-bold rounded-md">
+        <button type="submit" className={`w-full py-2 bg-green-500 text-white font-bold rounded-md ${isLoading?'pointer-events-none':''}`}>
 
               {isLoading?<span className="">Adding.. </span>:<span>Add Book</span>} 
         </button>

@@ -31,7 +31,13 @@ import Loading from '../../components/loading';
     }, [data,setValue])
     useEffect(()=>{
       if(isUpdateError || isFetchError){
-        navigate("/admin")
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `Something went wrong  try again !`,
+      });
+      
+  
       }
     },[isUpdateError,isFetchError,navigate])
 
@@ -43,8 +49,15 @@ import Loading from '../../components/loading';
       formData.append('title', data.title);
       formData.append('description', data.description);
       formData.append('category', data.category);
-      formData.append('oldPrice', data.oldPrice);
-      formData.append('newPrice', data.newPrice);
+      if(isOffer){
+        formData.append('oldPrice', data.oldPrice);
+        formData.append('newPrice', data.newPrice);
+
+      }else{
+        formData.append('oldPrice', 0);
+        formData.append('newPrice', data.newPrice);
+
+      }
       formData.append('offer', data.offer);  // Default to false if unchecked
       formData.append('cover', data.Image[0]);  // Append the file itself
       
@@ -59,16 +72,19 @@ import Loading from '../../components/loading';
 
       });
       navigate("/manage-books",{state:{updated:true}})
-
     
     
     } catch (error) {
-      Swal.fire({
-        icon: "error",
+      if(error?.data === "Invalid Credentials error with the token"){
+        navigate("/admin")
+        Swal.fire({
+          icon: "error",
         title: "Oops...",
         text: `Something went wrong  try again !`,
-    });
-    
+      });
+
+      console.log(error.data =="Invalid Credentials error with the token")
+    }
 
     }
 
@@ -82,10 +98,7 @@ import Loading from '../../components/loading';
     // Add more options as needed
   ]
 
-if(isUpdateError) return <>
-  <div className='flex justify-center items-center text-3x font-bold font-secondary'>Error while Updateing the data please try again later</div>
-    {navigate("/manage-books")}
-</>
+
 
 if(isFetchError) return <>
 <div className='flex justify-center items-center text-3x font-bold font-secondary'>Error while Loading the data please try again later</div>
@@ -182,7 +195,7 @@ if(isFetching) return <div className=' h-[99vh] flex justify-center items-center
         {/* Cover Image Upload */}
         <div className="mb-4 ">
           <label className="block text-sm font-semibold text-gray-700 mb-4 " htmlFor='file' >Book Cover: </label>
-          <input  type="file" accept="image/*"  className="mb-2 w-full "  id='file' {...register("Image",{required:true})}/>
+          <input  type="file" accept="image/*"  className="mb-2 w-full "  id='file' {...register("Image")}/>
             {errors.Image && <span className="text-red-600">{errors.Image.type == "required"&&"please choose image for the book"}</span>}
         </div>
         
@@ -200,7 +213,7 @@ if(isFetching) return <div className=' h-[99vh] flex justify-center items-center
 
         {/* Submit Button */}
 
-            <button type="submit" className="w-full py-2 bg-green-500 text-white font-bold rounded-md">
+            <button type="submit" className={`w-full py-2 bg-green-500 text-white font-bold rounded-m  ${isUpdating?'pointer-events-none opacity-40':''}`}>
 
               {isUpdating?<span className="cursor-no-drop">Updating ... </span>:<span>Update Book</span>} 
         </button>

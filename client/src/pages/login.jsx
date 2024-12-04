@@ -8,7 +8,7 @@ const Login = () => {
 
   const navigate = useNavigate()
   const [message,setMessage] = useState("")
-  const {loginUser,signInWithGoogle,loading} = useAuth()
+  const {loginUser,signInWithGoogle,loading,setLoading} = useAuth()
   const location = useLocation()
   const from = location.state?.from?.pathname || "/" 
   const {
@@ -16,7 +16,9 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm()
-  
+
+
+
   const handleGoogle =async()=>{
       try {
         await signInWithGoogle()
@@ -27,7 +29,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500
           });
-          
+          setLoading(true)
           navigate(from,{replace:true})
 
       } catch (error) {
@@ -46,7 +48,6 @@ const Login = () => {
     const onSubmit = async(data) => {
       try {
         await loginUser(data.email,data.password)
-
         Swal.fire({
           position: "center-center",
           icon: "success",
@@ -54,8 +55,8 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500
           });
-          
-        navigate(from,{replace:true})
+          setLoading(true)
+          navigate(from,{replace:true})
 
       } catch (error) {
         console.log(error.code)

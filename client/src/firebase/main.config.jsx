@@ -1,3 +1,4 @@
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import  {getAuth} from "firebase/auth"
@@ -6,14 +7,15 @@ import  {getAuth} from "firebase/auth"
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
 const firebaseConfig = {
-  apiKey: "AIzaSyBgriG8zJccl_Q2DkQcHrqwlhHN4WFC6x0",
-  authDomain: "bookstore-89005.firebaseapp.com",
-  projectId: "bookstore-89005",
-  storageBucket: "bookstore-89005.firebasestorage.app",
-    messagingSenderId: "938475571433",
-    appId: "1:938475571433:web:6f70aaa3355ec9df848878",
-    measurementId: "G-Z36YY0GC44"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_PROJECT_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSEGING_SENDER_ID ,
+  appId:  import.meta.env.VITE_APP_ID,
+  measurementId: import.meta.env.VITE_MEASUREMENT_ID  
 };
 
 // Initialize Firebase

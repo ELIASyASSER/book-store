@@ -50,7 +50,7 @@ return (
                                             })
                                     }
 
-                            {localStorage.getItem("token")?<Link  className="block hover:bg-[#8dc0ff98] duration-300 p-2 border-b-2 z-20" onClick={()=>setOpenModal(false)} to={"/dashboard"}>Dashboard
+                            {localStorage.getItem("ThE_SeCrEt_ToKeN")?<Link  className="block hover:bg-[#8dc0ff98] duration-300 p-2 border-b-2 z-20" onClick={()=>setOpenModal(false)} to={"/dashboard"}>Dashboard
                             </Link>:
                                 <Link  className="block hover:bg-[#8dc0ff98] duration-300 p-2 border-b-2 z-20" onClick={()=>setOpenModal(false)} to={"/admin"}>Admin
                                 </Link>

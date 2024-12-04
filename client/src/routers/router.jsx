@@ -95,14 +95,14 @@ const router = createBrowserRouter([
         </DashBoardProtection>
     },
     {
-        path:"*",
-        element:<NotFoundPage/>
-    },
-    {
         path:"/update-book/:updatedBookId",
         element:<DashBoardProtection>
             <UpdateBook/>
         </DashBoardProtection>
+    },
+    {
+        path:"*",
+        element:<NotFoundPage/>
     }
 
 ])

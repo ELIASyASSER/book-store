@@ -33,7 +33,7 @@ const AdminLogin = () => {
         const resp = await logadmin(details).unwrap()
         
         if(resp.token){
-          localStorage.setItem("token",resp.token)
+          localStorage.setItem("ThE_SeCrEt_ToKeN",resp.token)
           const expiredToken = new Date().getTime() + 3600000
           localStorage.setItem("expiredToken",expiredToken)
 
