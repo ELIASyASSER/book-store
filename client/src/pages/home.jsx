@@ -1,9 +1,10 @@
 import Contact from "../components/Home/contact"
+import UpcomingBooks from "../components/Home/features/upcomingBooks"
 import MainPage from "../components/Home/mainPage"
 import Maps from "../components/Home/maps"
 import News from "../components/Home/news"
 import RecommendedBooks from "../components/Home/recomended"
-import TopSellers from "../components/Home/topSellers"
+import Books from "../components/Home/topSellers"
 
 
 const Home = () => {
@@ -12,9 +13,10 @@ const Home = () => {
     <>
 
         <MainPage/>
-        <TopSellers/>
+        <Books/>
         <RecommendedBooks/>
         <News/>
+        {/* <UpcomingBooks/> */}
         <Contact/>
         <Maps/>
 

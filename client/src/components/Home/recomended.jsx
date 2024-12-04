@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Navigation } from 'swiper/modules';
+import { Autoplay, Navigation } from 'swiper/modules';
 import CardBook from "./cardBook";
 import { useGetAllBooksQuery } from "../../redux/features/bookApi";
 import Loading from "../loading";
@@ -17,14 +17,16 @@ const RecommendedBooks = () => {
         <h1 className="text-3xl font-semibold mt-14 mb-7">Recommended For You</h1>
         <Swiper
       // install Swiper modules
-      
-    modules={[Navigation]}
+    autoplay={{
+        delay:3000
+    }}
+    modules={[Navigation,Autoplay]}
     spaceBetween={0}
     navigation={{
         nextEl: '.custom-button-next',
         prevEl: '.custom-button-prev',
     }}
-    loop={false}
+    loop={true}
     breakpoints={{
         640: {
         slidesPerView: 1,

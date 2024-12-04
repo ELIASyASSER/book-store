@@ -10,7 +10,7 @@ import CardBook from './cardBook';
 import { useGetAllBooksQuery } from '../../redux/features/bookApi';
 import Loading from '../loading';
 
-const TopSellers = () => {
+const Books = () => {
     
     const {data:books,isError,isLoading} = useGetAllBooksQuery()
     const categories = ["choose a genre","fiction","business","horror","adventure"]
@@ -22,7 +22,7 @@ const TopSellers = () => {
     return (
     
     <section >
-        <h1 className="text-3xl font-semibold mt-14">Top Sellers</h1>
+        <h1 className="text-3xl font-semibold mt-14">Available Books</h1>
         <select name="sellers" id="sellers" className="my-10  bg-[#EAEAEA] py-2 px-4  font-secondary text-xl hover:outline-none outline-none" onChange={(e)=>setSelectedCategory(e.target.value)} >
             {
                 categories
@@ -77,4 +77,4 @@ const TopSellers = () => {
   )
 }
 
-export default TopSellers
+export default Books

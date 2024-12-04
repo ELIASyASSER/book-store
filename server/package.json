@@ -4,7 +4,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon index"
+    "dev": "nodemon index",
+    "addBooks":"node addBooks.js"
   },
   "keywords": [],
   "author": "",

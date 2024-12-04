@@ -29,7 +29,6 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500
           });
-          setLoading(true)
           navigate(from,{replace:true})
 
       } catch (error) {
@@ -55,7 +54,6 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500
           });
-          setLoading(true)
           navigate(from,{replace:true})
 
       } catch (error) {

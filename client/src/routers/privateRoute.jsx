@@ -2,9 +2,9 @@ import { Navigate, Outlet, useLocation } from "react-router-dom"
 import { useAuth } from "../context/AuthUser"
 
 const PrivateRoute = ({children}) => {
-  const {currentUser,Loading} = useAuth()
+  const {currentUser,loading} = useAuth()
   const location = useLocation()
-  if(Loading ==null) return<div>Loading ...</div>
+  if(loading ==true) return<div>Loading ...</div>
   return !currentUser ?<Navigate to={'/login'} state={{from:location}}/>:children
 }
 
