@@ -3,7 +3,8 @@
 ## Description:
 mern stack book store website i make this website with admin dashboard to manage the content with awsome
 
-stats for authentication i use google firebase  `https://console.firebase.google.com/?_gl=1*17i2nd3*_ga*OTU0MzkxMC4xNzMxMjQ5NTEx*_ga_CW55HF8NVT*MTczMzMxMTM5My4xMS4xLjE3MzMzMTE1MTIuNDYuMC4w`  
+stats for authentication i use google firebase 
+`https://console.firebase.google.com/?_gl=1*17i2nd3*_ga*OTU0MzkxMC4xNzMxMjQ5NTEx*_ga_CW55HF8NVT*MTczMzMxMTM5My4xMS4xLjE3MzMzMTE1MTIuNDYuMC4w`  
 
 replace your variables in the `.env.example` file  for state management i use `Redux toolkit` and `RTK QUERY` It simplifies handling 
 
@@ -29,13 +30,13 @@ To get the project up and running locally:
 
 4. create a fire base project from this link then select authenticate service 
 
-(https://console.firebase.google.com/?_gl=1*17i2nd3*_ga*OTU0MzkxMC4xNzMxMjQ5NTEx*_ga_CW55HF8NVT*MTczMzMxMTM5My4xMS4xLjE3MzMzMTE1MTIuNDYuMC4w)
+https://console.firebase.google.com/?_gl=1*17i2nd3*_ga*OTU0MzkxMC4xNzMxMjQ5NTEx*_ga_CW55HF8NVT*MTczMzMxMTM5My4xMS4xLjE3MzMzMTE1MTIuNDYuMC4w
 
 5. you will find .env.example rename it to .env and replace variables inside it from your firebase project
 
 6.  now inside `server directory` you will find  `.env.example` for cloudinary service replace your own variables after creating account on cloudiary from this link
 7.  
-(https://console.cloudinary.com/pm/c-2a3df6e136b51a8752a7b47e355d78/getting-started) for mongodb replace your url connection 
+https://console.cloudinary.com/pm/c-2a3df6e136b51a8752a7b47e355d78/getting-started for mongodb replace your url connection 
 
 8. finally in your termianl in `server ` run this script to create dummy data for you `npm run addBooks`  after that run `npm run dev` in both `server directory and client directory`
  open `http://localhost:5173/` in your favourite browser
