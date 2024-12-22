@@ -35,7 +35,7 @@ https://console.firebase.google.com/?_gl=1*17i2nd3*_ga*OTU0MzkxMC4xNzMxMjQ5NTEx*
 5. you will find .env.example rename it to .env and replace variables inside it from your firebase project
 
 6.  now inside `server directory` you will find  `.env.example` for cloudinary service replace your own variables after creating account on cloudiary from this link
-7.  
+
 https://console.cloudinary.com/pm/c-2a3df6e136b51a8752a7b47e355d78/getting-started for mongodb replace your url connection 
 
 8. finally in your termianl in `server ` run this script to create dummy data for you `npm run addBooks`  after that run `npm run dev` in both `server directory and client directory`
