@@ -31,7 +31,7 @@ To get the project up and running locally:
 
 https://console.firebase.google.com/?_gl=1*17i2nd3*_ga*OTU0MzkxMC4xNzMxMjQ5NTEx*_ga_CW55HF8NVT*MTczMzMxMTM5My4xMS4xLjE3MzMzMTE1MTIuNDYuMC4w
 
-5. you will find .env.example rename it to .env and replace variables inside it from your firebase project
+5. you will find `.env.example` rename it to `.env` and replace variables inside it from your firebase project
 
 6.  now inside `server directory` you will find  `.env.example` for cloudinary service replace your own variables after creating account on cloudiary from this link
 
