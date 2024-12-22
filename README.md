@@ -1,9 +1,8 @@
 # Book-Store 
 
 ## Description:
-mern stack book store website i make this website with admin dashboard to manage the content with awsome
+mern stack book store website i make this website with admin dashboard to manage the content with awsome stats  i use google firebase for authentication
 
-stats for authentication i use google firebase 
 `https://console.firebase.google.com/?_gl=1*17i2nd3*_ga*OTU0MzkxMC4xNzMxMjQ5NTEx*_ga_CW55HF8NVT*MTczMzMxMTM5My4xMS4xLjE3MzMzMTE1MTIuNDYuMC4w`  
 
 replace your variables in the `.env.example` file  for state management i use `Redux toolkit` and `RTK QUERY` It simplifies handling 
