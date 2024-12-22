@@ -58,5 +58,5 @@ https://console.cloudinary.com/pm/c-2a3df6e136b51a8752a7b47e355d78/getting-start
   
 ### Contribution
 🤝
-if there any issue or features leave an issue i will consider it [Issue Page]([issues/](https://github.com/ELIASyASSER/book-store/issues))
+if there any issue or features leave an issue i will consider it [Issue Page](https://github.com/ELIASyASSER/book-store/issues)
 or make [pull request here ](https://github.com/ELIASyASSER/book-store/pulls)
