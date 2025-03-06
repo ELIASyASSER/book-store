@@ -60,7 +60,7 @@ const updateBook = async(req,res,next)=>{
         res.status(200).send({message:"book Updated ",book:updatedBook})
 
     } catch (err) {
-        console.log(err.message,'debugger')
+        // console.log(err.message,'debugger')
         next(err)
     }
 }

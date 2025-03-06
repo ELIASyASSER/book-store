@@ -25,10 +25,21 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
+// app.use(cors({
+//     origin:"https://book-store-frontend-ten-mu.vercel.app/",
+//     credentials:true
+// }))
 app.use(cors({
-    origin:[process.env.CLIENT_URL,"https://book-store-frontend-roan.vercel.app/"],
-    credentials:true
-}))
+    origin: 'https://book-store-frontend-ten-mu.vercel.app', // Your frontend URL
+    methods: 'GET, POST, PUT, DELETE, OPTIONS',
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+  }));
+  
+  // ✅ Handle preflight requests
+  app.options('*', cors());
+  
+  
 
 app.use("/uploads",express.static(path.join(__dirname,"uploads")))
 

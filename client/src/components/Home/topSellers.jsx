@@ -15,7 +15,7 @@ const Books = () => {
     const {data:books,isError,isLoading} = useGetAllBooksQuery()
     const categories = ["choose a genre","fiction","business","horror","adventure"]
     const [selectedCategory,setSelectedCategory] = useState("choose a genre")
-    const filterdBooks = selectedCategory =="choose a genre"?books:books?.filter((book)=>book.category == selectedCategory)
+    const filterdBooks = selectedCategory =="choose a genre"?books:books?.filter((book)=>book.category == selectedCategory)||[]
     if(isLoading)return <Loading/>
     if(isError)return <div>Error Happening while Fetching Data</div>
     

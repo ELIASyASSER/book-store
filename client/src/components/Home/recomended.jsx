@@ -10,7 +10,7 @@ import Loading from "../loading";
 const RecommendedBooks = () => {
     const {data,isError,isLoading} = useGetAllBooksQuery()
     if(isLoading) return <Loading/>
-    const recommended_for_you = data.filter((book)=>book.offer == true)
+    const recommended_for_you = data?.filter((book)=>book.offer == true)||[]
 
     return (
     <section className=" mb-24 ">
