@@ -1,0 +1,4 @@
+"use strict";(self.odspNextWebpackJsonp=self.odspNextWebpackJsonp||[]).push([["initial.resx"],{188:e=>{e.exports=JSON.parse('{"a":"My files"}')}
+,182:e=>{e.exports=JSON.parse('{"m":"Open in Word","h":"Open in Project","b":"Open in Excel","g":"Open in PowerPoint","e":"Open in OneNote","k":"Open in Visio","i":"Open in Publisher","c":"Open in InfoPath","l":"Open in Word Online","f":"Open in PowerPoint Online","a":"Open in Excel Online","d":"Open in OneNote Online","j":"Open in Visio Online"}')}
+,209:e=>{e.exports=JSON.parse('{"c":"Still here?","a":"For your security, Personal Vault will automatically lock in 1 minute.","b":"Keep unlocked","f":"Personal Vault didn\\u0027t lock","d":"There was a problem locking your Personal Vault. If this happens again, you can sign out of OneDrive to lock your Personal Vault","e":"Retry"}')}
+}]),define("initial.resx",[],{});

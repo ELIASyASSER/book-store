@@ -10,6 +10,7 @@ export default {
           'primary':["Montserrat", "sans-serif"],
           'secondary':["Nunito Sans", "sans-serif"]
       },
+
       colors:{
         'primary': '#FFCE1A',
         'secondary' : "#0D0842",

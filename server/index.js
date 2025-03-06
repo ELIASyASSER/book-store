@@ -9,6 +9,7 @@ import path from "path";
 import bookRouter from './routers/book.js'
 import ordersRouter from "./routers/orders.js"
 import userRouter from "./routers/user.js"
+import dashboard from "./routers/dashboard.js"
 import connection from './db/books.js'
 import axios from "axios"
 import fs from "fs"
@@ -25,7 +26,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
 app.use(cors({
-    origin:process.env.CLIENT_URL,
+    origin:[process.env.CLIENT_URL,"https://book-store-frontend-roan.vercel.app/"],
     credentials:true
 }))
 
@@ -38,7 +39,7 @@ const downladProfileImg = ()=>{
     app.post("/uploadImg",async(req,res,next)=>{
         const {urlImg} = req.body
         if (!req.body || !req.body.urlImg) {
-            next("url of the image not found ")
+            return next(new Error("url of the image not found"))
         }
 
         const imgHash = generateImgHash(urlImg)
@@ -46,11 +47,9 @@ const downladProfileImg = ()=>{
         const filePath = path.join(__dirname,'uploads',fileName)
         try {
             const response = await axios({
-
                 url:urlImg,
                 method:"GET",
                 responseType:"stream"
-                
             })
 
             const writer = fs.createWriteStream(filePath)
@@ -58,13 +57,13 @@ const downladProfileImg = ()=>{
             response.data.pipe(writer)
 
             writer.on("finish",()=>{
-            res.status(200).json({msg:"Image saved Successfully",url:`/uploads/${fileName}`})
+            return res.status(200).json({msg:"Image saved Successfully",url:`/uploads/${fileName}`})
 
         })
         
         writer.on("error",(err)=>{
             console.log("error downloading the image",err)
-            next("Failed to download the image")
+            return next(new Error("Failed to download the image"))
             
         })
     } catch (error) {
@@ -84,6 +83,7 @@ downladProfileImg()
 app.use("/api",bookRouter)
 app.use("/orders",ordersRouter)
 app.use("/admin",userRouter)
+app.use("/dashboard",dashboard)
 
 //errors handler middlewares 
 app.use(errorHandler)

@@ -3,7 +3,6 @@ import ordersModel from "../models/ordersModel.js"
 const placeOrder = async(req,res,next)=>{
 
     try {
-        
         const order = await ordersModel.create(req.body)
         res.status(201).json(order)
 

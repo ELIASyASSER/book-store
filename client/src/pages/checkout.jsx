@@ -2,12 +2,15 @@ import { Link, useNavigate } from "react-router-dom"
 import "./checkout.css"
 import { useState } from "react"
 import { useSelector,useDispatch } from "react-redux"
+
 import {clearItems} from "../redux/features/addCart"
 import { useForm } from "react-hook-form"
 import { useAuth } from "../context/AuthUser"
+
 import {useCreateOrderMutation} from "../redux/features/orderApi"
 import Swal  from "sweetalert2"
 import Loading from "../components/loading"
+
 const CheckOut = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -19,36 +22,58 @@ const CheckOut = () => {
         formState: { errors },
     } = useForm()
 
+
     const {cartItems} = useSelector((state)=>state.shopping)
-    let numberOfItems = cartItems.length
+
+
     let orderd_books_ids = cartItems.map((book)=>{
         return book._id;
     })
+
+
+
     const [checked,setChecked] = useState(false)
-    let {newPrice} = cartItems.reduce((prev,curr)=>{
-        const {newPrice} = curr;
-        prev.newPrice+=newPrice
+
+
+    let {newPrice,count} = cartItems.reduce((prev,curr)=>{
+
+
+        const {newPrice,count} = curr;
+        prev.newPrice+=(newPrice*count)
+        prev.count+=count
         return prev
         
     },{
-        newPrice:0
+        newPrice:0,
+        count:0
     })
+
+
     newPrice = newPrice.toFixed(2)
     const onSubmit = async(data) => {
 
         const placeanOrder = {
             fullName:data.fullName,
             email:data.email,
+
             phone:data.phone,
                 price:newPrice,
                 orderdEmail:userDetails().email,
+
                 addressDetails:{
                     fullAddress:data.fullAddress,
                     city:data.city,
+
                 },
-                orderData:orderd_books_ids
+            
+                orderData:orderd_books_ids,
+
+                countofItems:count
+            
             }
+
     try {
+
         await createOrder(placeanOrder).unwrap();
 
         setTimeout(() => {
@@ -98,13 +123,15 @@ const CheckOut = () => {
 
     // if(isError) return <div>Error please try again later</div>
     if(isLoading)return <Loading/>
-  return (
+    return (
+
+    
     <main className="w-11/12 bg-gray-300 mx-auto lg:px-12 px-4 py-6 flex flex-col">
         <div className="top font-primary  lg:w-[85%] lg:mx-auto mb-4">
         <h2 className="font-semibold text-xl">Cash On Delivery</h2>
         <div className="text-slate-700 text-[18px] font-mono">
         <p >Total Price :<span>${newPrice}</span></p>
-        <p>Items:<span>{numberOfItems}</span> </p>
+        <p>Items:<span>{count}</span> </p>
         </div>
         </div>
         <div className="white-page flex justify-between flex-wrap bg-white w-full lg:w-[85%] mx-auto shadow-lg rounded-md px-8 py-6 ">
@@ -162,7 +189,8 @@ const CheckOut = () => {
             </form>
         </div>
     </main>
-  )
+)
+
 }
 
 export default CheckOut

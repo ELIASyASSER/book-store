@@ -1,0 +1,1106 @@
+.mock-grid-list-view-class {
+  position: absolute;
+  bottom: 10px;
+  top: 80px;
+  width: 70%;
+}
+
+.mock-grid-list-vertical-view-class {
+  width: auto;
+}
+
+.container-rendered-as-grid-class.mock-grid-list-view-class {
+  position: absolute;
+  top: 80px;
+  width: 100%;
+}
+
+.section-list-view-visible-class {
+  overflow-y: auto;
+  position: relative;
+  height: 100%;
+  padding: 3px;
+  padding-top: 7px;
+}
+
+.section-list-view-visible-zero-vertical-thumbnail-section-class {
+  padding-top: 15px;
+}
+
+.display-horizontal-class.section-list-view-visible-class {
+  display: flex;
+  overflow-y: hidden;
+}
+
+.generic-view-class {
+  outline: none;
+}
+
+.generic-view-class * {
+  outline: none;
+}
+
+.section-view-title-default-class {
+  margin-bottom: 12px;
+}
+
+.section-view-title-default-without-shift-class {
+  position: relative;
+  height: 30px;
+  border-radius: 2px;
+  background-color: transparent;
+  font-family: Segoe UI Semibold, Segoe UI, sans-serif;
+  font-weight: 600;
+  line-height: 30px;
+  background: none;
+  margin-bottom: 8px;
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+.section-view-visible-class .section-view-title-selected-class {
+  background-color: #f3f2f1;
+}
+
+.section-view-visible-class
+  .section-view-title-selected-class
+  .section-view-title-span-class,
+.section-view-visible-class
+  .section-view-title-selected-class
+  .section-view-vertical-title-span-class {
+  color: #c43e1c;
+  font-family: Segoe UI, sans-serif;
+  font-weight: bold;
+}
+
+.section-view-drag-over-div-class {
+  position: absolute;
+  display: none;
+}
+
+.section-view-drag-over-div-class.section-view-drag-over-div-visible-class {
+  display: block;
+  height: 2px;
+  width: 80%;
+  background-color: #c43e1c;
+  left: 10px;
+  top: 30px;
+  z-index: 10;
+}
+
+.rtl-class
+  .section-view-drag-over-div-class.section-view-drag-over-div-visible-class {
+  left: inherit;
+  right: 10px;
+}
+
+.section-view-visible-class {
+  position: relative;
+  font-family: Segoe UI Semibold, Segoe UI, sans-serif;
+  font-size: 14px;
+  color: #a8a8a8;
+  text-align: left;
+}
+
+.section-view-edit-title-class {
+  position: relative;
+  height: 30px;
+  border-radius: 2px;
+  background-color: transparent;
+  font-family: Segoe UI Semibold, Segoe UI, sans-serif;
+  font-weight: 600;
+  line-height: 30px;
+  z-index: 1;
+}
+
+.section-view-edit-title-vertical-class {
+  margin-bottom: 8px;
+}
+
+.section-view-edit-title-class .section-view-title-span-class,
+.section-view-edit-title-class .section-view-vertical-title-span-class {
+  position: relative;
+  color: rgb(37, 36, 35);
+  transform-origin: 0 0;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  white-space: nowrap;
+  overflow: visible;
+  /* allowing visible overflow, since view is dynamically resized */
+  text-overflow: ellipsis;
+  border-radius: 2px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 10px;
+  height: 24px;
+  z-index: 2;
+}
+
+.section-view-edit-title-class .section-view-vertical-title-span-class {
+  overflow: hidden;
+  width: 90%;
+  display: inline-block;
+}
+
+.section-view-edit-title-class .section-view-title-input-class {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+  background: none;
+  background-color: transparent;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  border-radius: 2px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  margin-left: 8px;
+  padding: 0px;
+  height: 24px;
+  font-size: 14px;
+  color: rgb(37, 36, 35);
+  z-index: 3;
+}
+
+.rtl-class .section-view-title-input-class {
+  right: 0;
+  text-align: right;
+  unicode-bidi: plaintext;
+  /* the style "direction: rtl;" inherited from .rtl-class does not work well for text input
+     as it reverse keyboard arrow keys as well, e.g. pressing right but the cursor move towards left,
+     so set it to 'ltr' and above 'text-align: right;' is enought for the textbox layout well */
+  direction: ltr;
+  margin-right: 8px;
+}
+
+.rtl-class .section-view-title-span-class,
+.rtl-class .section-view-vertical-title-span-class {
+  margin-right: 10px;
+}
+
+.section-view-edit-title-class:hover {
+  background: #e1dfdd;
+}
+
+.rtl-class .section-view-visible-class {
+  text-align: right;
+}
+
+.rtl-class.section-list-view-visible-class {
+  direction: rtl;
+}
+
+.grid-list-view-visible-class {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+}
+
+.grid-list-view-vertical-visible-class {
+  flex-flow: column;
+}
+
+.display-horizontal-class .grid-list-view-visible-class {
+  flex-wrap: nowrap;
+}
+
+.drag-over-frame-view-visible-class {
+  display: block;
+  position: relative;
+}
+
+.drag-over-frame-view-hidden-class {
+  width: 0px;
+}
+
+.drag-over-frame-view-indicator-class {
+  position: relative;
+}
+
+.drag-over-frame-view-inner-indicator-class {
+  width: 2px;
+  background-color: #c43e1c;
+  position: absolute;
+  left: -18px;
+}
+
+.rtl-class .drag-over-frame-view-inner-indicator-class {
+  right: -18px;
+  left: inherit;
+}
+
+.grid-frame-view-inner-container-class {
+  flex-direction: column;
+  flex-flow: column-reverse;
+  display: flex;
+}
+
+.grid-frame-view-inner-container-vertical-class {
+  display: flex;
+  flex-direction: row;
+}
+
+.grid-frame-view-inner-container-class:hover .grid-content-view-visible-class {
+  outline: 4px solid #b3b0ad;
+}
+
+.grid-frame-view-visible-class {
+  position: relative;
+  display: flex;
+  padding-bottom: 20px;
+}
+
+.grid-frame-view-visible-class.small-screen-space-regain {
+  padding-bottom: 12px;
+}
+
+.grid-frame-view-vertical-visible-class {
+  flex-direction: column;
+}
+
+.grid-content-view-visible-class .grid-content-view-drag-over-div {
+  position: absolute;
+  top: 0;
+  right: 17px;
+  width: 0;
+  height: 75%;
+}
+
+.grid-content-view-visible-class
+  .grid-content-view-drag-over-div.grid-content-view-drag-over-visual {
+  outline: 2px solid #c43e1c;
+}
+
+.grid-content-boundary-view-selected-class {
+  background-color: #c43e1c;
+  forced-color-adjust: none;
+}
+
+@media screen and (forced-colors: active) {
+  .grid-content-boundary-view-selected-class {
+    background-color: Highlight;
+    forced-color-adjust: none;
+  }
+}
+
+.grid-content-boundary-view-default-class {
+  display: flex;
+  width: 2px;
+  top: -3px;
+  position: relative;
+  background-clip: content-box;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-top-width: 0px;
+  border-bottom-width: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.grid-content-boundary-vertical-view-default-class {
+  height: 1px;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  padding-left: 7px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-right: 0px;
+  top: 0px;
+}
+
+.grid-content-boundary-view-hidden-class {
+  visibility: hidden;
+}
+
+.grid-content-boundary-view-first-slide-with-sections-class {
+  position: absolute;
+  border: 12px;
+  width: 2px;
+  left: -10px;
+  top: 27px;
+  padding-right: 12px;
+  padding-left: 8px;
+  background-clip: content-box;
+}
+
+.grid-content-boundary-view-first-slide-without-sections-class {
+  position: absolute;
+  border: 12px;
+  width: 2px;
+  left: -10px;
+  padding-right: 12px;
+  padding-left: 8px;
+  background-clip: content-box;
+}
+
+.rtl-class .grid-content-boundary-view-first-slide-with-sections-class {
+  right: -15px;
+}
+
+.rtl-class .grid-content-boundary-view-first-slide-without-sections-class {
+  right: -15px;
+}
+
+.grid-content-boundary-view-deselected-class {
+  background-color: #edebe9;
+}
+
+.container-rendered-as-grid-class.grid-frame-view-visible-class {
+  position: relative;
+  width: 100%;
+  padding-bottom: 90px;
+}
+
+.grid-frame-view-slide-info-container-class {
+  position: absolute;
+  bottom: 35px;
+  height: 50px;
+  width: 965px;
+  background: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+}
+
+.grid-frame-view-slide-info-container-vertical-class {
+  top: 0px;
+  height: 100%;
+  width: auto;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  max-width: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.grid-frame-view-slide-index-container-class {
+  position: relative;
+  padding: 0px 5px 0px 5px;
+  font-family: Segoe UI, sans-serif;
+  font-size: 14px;
+  color: #a8a8a8;
+  z-index: 1;
+}
+
+.grid-frame-view-in-drag-class {
+  display: none;
+}
+
+.container-rendered-as-grid-class.grid-frame-view-slide-index-container-class {
+  position: absolute;
+  bottom: 8px !important;
+  padding: 0px 15px 0px 15px;
+  font-family: Segoe UI, sans-serif;
+  font-size: 30px;
+  color: rgb(124, 122, 122);
+}
+
+/*To be deleted*/
+.grid-frame-view-num-comments-container-class {
+  position: absolute;
+  bottom: 12px;
+  right: 15px;
+  padding: 0px 5px 0px 5px;
+  font-family: Segoe UI, sans-serif;
+  font-size: 20px;
+  color: rgb(116, 113, 113);
+}
+
+.grid-frame-view-num-comments-with-icon-container-class {
+  position: relative;
+  float: right;
+}
+
+.rtl-class .grid-frame-view-num-comments-with-icon-container-class {
+  float: left;
+}
+
+.grid-frame-view-num-comments-on-comment-icon {
+  position: absolute;
+  color: white;
+  display: block;
+  z-index: 1;
+  font-size: 8px;
+  margin: auto;
+  width: 100%;
+  top: 0px;
+  text-align: center;
+}
+
+.grid-frame-view-transition-or-animation-icon-container-class {
+  float: right;
+  height: 16px;
+  width: 16px;
+  overflow: hidden;
+  margin-top: 0px;
+  position: relative;
+  margin-left: 8px;
+  margin-right: auto;
+}
+
+.grid-frame-view-transition-or-animation-icon-container-vertical-class {
+  margin-left: 3px;
+}
+
+.grid-frame-view-transition-or-animation-icon-hidden-class {
+  display: none;
+}
+
+.grid-frame-view-Comments-icon-hidden-class {
+  display: none;
+}
+
+.grid-content-view-visible-class {
+  width: 247px;
+  height: 140px;
+  outline: 1px solid #d2d2ce;
+  z-index: 2;
+}
+
+.grid-frame-view-postion-relative-class {
+  position: relative;
+}
+
+.grid-frame-view-reflow-width {
+  width: calc(100% - 20px);
+}
+
+.presence-outer-container-class {
+  position: absolute;
+  bottom: 18.5px;
+}
+
+.presence-outer-container-vertical-class {
+  bottom: 0px;
+  right: 0px;
+}
+
+.presence-inner-container-class {
+  position: absolute;
+  top: -10px;
+  width: 20px;
+  height: 20px;
+  right: -10px;
+}
+
+.rtl-class .presence-inner-container-class {
+  right: auto;
+  left: -10px;
+}
+
+.presence-touch-target-class {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  top: -10px;
+  left: -10px;
+  z-index: 900;
+}
+
+.presence-flyout-container-class {
+  position: absolute;
+  z-index: 3;
+}
+
+.rtl-class .presence-flyout-container-class {
+  left: 0px;
+  right: auto;
+}
+
+.presence-flyout-expanded-container-class {
+  display: flex;
+  flex-direction: column-reverse;
+  right: 0px;
+}
+
+.presence-flyouts-collapsed-class,
+.presence-flyout-expanded-class {
+  height: 20px;
+  border-radius: 20px;
+  background-color: #498205;
+}
+
+.presence-flyout-expanded-class {
+  min-width: 44px;
+  max-width: 150px;
+  margin-bottom: 2px;
+  align-self: flex-end;
+}
+
+.presence-flyouts-collapsed-class {
+  position: absolute;
+  width: 20px;
+  right: -20px;
+}
+
+.presence-flyout-collapsed-text-class,
+.presence-flyout-expanded-text-class {
+  line-height: 20px;
+  font-size: 10px;
+  color: white;
+  font-family: Segoe UI, Segoe UI Web (West European), -apple-system,
+    BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+
+.presence-flyout-collapsed-text-class {
+  text-align: center;
+}
+
+.presence-flyout-expanded-text-class {
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0px 8px;
+}
+
+.presence-flyout-collapsed-class-0 {
+  right: -20px;
+}
+
+.presence-flyout-collapsed-class-1 {
+  right: -16px;
+}
+
+.presence-flyout-collapsed-class-2 {
+  right: -12px;
+}
+
+.rtl-class .presence-flyout-collapsed-class-1 {
+  right: -24px;
+}
+
+.rtl-class .presence-flyout-collapsed-class-2 {
+  right: -28px;
+}
+
+.container-rendered-as-grid-class.grid-content-view-visible-class {
+  width: 950px;
+  height: 140px;
+  outline: 1px solid #d2d2ce;
+}
+
+.grid-content-view-visible-class:hover {
+  cursor: pointer;
+}
+
+.single-select-draggable-class {
+  opacity: 0.75;
+  outline: 3px solid #c43e1c;
+  box-shadow: 10px 10px 15px lightgrey;
+  z-index: 1000;
+  position: absolute;
+}
+
+.multiple-select-draggable-outer-container-class {
+  height: 150px;
+  width: 300px;
+  position: absolute;
+}
+
+.multiple-select-draggable-inner-container-class {
+  height: 150px;
+  width: 300px;
+  position: relative;
+  opacity: 0.75;
+  z-index: 1000;
+  /* Same z-index to .single-select-draggable-class */
+}
+
+.draggable-count-container-class {
+  position: absolute;
+  z-index: 1001;
+  width: 33px;
+  height: 40px;
+  background-color: #c43e1c;
+  color: white;
+  font-family: Segoe UI Semibold, Segoe UI, sans-serif;
+  font-size: 15px;
+  top: -20px;
+  left: 10px;
+  vertical-align: middle;
+  line-height: 40px;
+  text-align: center;
+}
+
+.secondary-tabbed-draggable-container-class {
+  top: 0px;
+  left: 20px;
+  width: 247px;
+  height: 140px;
+  background-color: white;
+  position: absolute;
+  top: 20px;
+  z-index: 998;
+  outline: 3px solid #c43e1c;
+  box-shadow: 10px 10px 15px lightgrey;
+}
+
+.primary-tabbed-draggable-container-class {
+  width: 247px;
+  height: 140px;
+  top: 0px;
+  background-color: white;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  outline: 3px solid #c43e1c;
+  z-index: 999;
+}
+
+.draggable-cloned-style-class {
+  position: absolute;
+  z-index: 1000;
+  outline: 3px solid #c43e1c;
+  width: 247px;
+  height: 140px;
+}
+
+.single-select-draggable-class .ppt-slidegrid-copilot-ux-class {
+  display: none;
+}
+
+.draggable-cloned-image-style-class {
+  width: 100%;
+  height: 100%;
+}
+
+.content-image-view-visible-class {
+  line-height: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.content-image-view-hidden-class,
+.presence-collapsed-hidden-class {
+  display: none;
+}
+
+.content-image-view-visible-class img {
+  width: 100%;
+  height: 100%;
+}
+
+.grid-frame-view-visible-class.grid-frame-view-selected-class
+  .grid-content-view-visible-class {
+  outline: 3px solid #c43e1c;
+  forced-color-adjust: none;
+}
+
+@media screen and (forced-colors: active) {
+  .grid-frame-view-visible-class.grid-frame-view-selected-class
+    .grid-content-view-visible-class {
+    outline: 3px solid Highlight;
+    forced-color-adjust: none;
+  }
+}
+
+.grid-frame-view-visible-class.grid-frame-view-selected-class:hover
+  .grid-content-view-visible-class {
+  outline: 4px solid #c43e1c;
+  forced-color-adjust: none;
+}
+
+@media screen and (forced-colors: active) {
+  .grid-frame-view-visible-class.grid-frame-view-selected-class:hover
+    .grid-content-view-visible-class {
+    outline: 4px solid Highlight;
+    forced-color-adjust: none;
+  }
+}
+
+.grid-frame-view-visible-class.grid-frame-view-selected-class
+  .grid-frame-view-slide-index-container-class {
+  color: #c43e1c;
+}
+
+.grid-frame-view-visible-class.grid-frame-view-active-focus-class
+  .grid-content-view-visible-class {
+  outline: 3px solid #c43e1c;
+  forced-color-adjust: none;
+}
+
+@media screen and (forced-colors: active) {
+  .grid-frame-view-visible-class.grid-frame-view-active-focus-class
+    .grid-content-view-visible-class {
+    outline: 3px solid Highlight;
+    forced-color-adjust: none;
+  }
+}
+
+.grid-frame-view-visible-class.grid-frame-view-hidden-slide-class
+  .grid-content-view-visible-class
+  .content-image-view-visible-class {
+  opacity: 0.4;
+}
+
+.grid-frame-view-visible-class.grid-frame-view-hidden-slide-class
+  .grid-frame-view-slide-index-container-class::after {
+  border-bottom: 1px solid;
+  -webkit-transform: rotate(20deg);
+  -ms-transform: rotate(20deg);
+  transform: rotate(20deg);
+  content: "";
+  width: 90%;
+  position: relative;
+  top: 8px;
+  left: 1px;
+}
+
+.ppt-slidegrid-copilot-start-anchor-element-class {
+  margin-left: 25px;
+}
+
+/* ---------------------- high contrast black mode ---------------------- */
+.slidegrid-high-contrast-black .section-view-visible-class {
+  color: #ffffff;
+}
+
+.slidegrid-high-contrast-black
+  .grid-frame-view-visible-class
+  .grid-frame-view-slide-index-container-class {
+  color: #ffffff;
+}
+
+.slidegrid-high-contrast-black
+  .grid-frame-view-visible-class.grid-frame-view-selected-class
+  .grid-frame-view-slide-index-container-class {
+  color: #1aebff;
+}
+
+.slidegrid-high-contrast-black
+  .grid-frame-view-visible-class.grid-frame-view-active-focus-class
+  .grid-content-view-visible-class {
+  outline: 1px solid #1aebff;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+}
+
+.slidegrid-high-contrast-black
+  .grid-frame-view-visible-class.grid-frame-view-selected-class
+  .grid-content-view-visible-class {
+  outline: 3px solid #1aebff;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+}
+
+.slidegrid-high-contrast-black
+  .grid-frame-view-visible-class.grid-frame-view-selected-class:hover
+  .grid-content-view-visible-class {
+  outline: 4px solid #1aebff;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+}
+
+.slidegrid-high-contrast-black
+  .grid-frame-view-visible-class.grid-frame-view-selected-class.grid-frame-view-active-focus-class
+  .grid-content-view-visible-class {
+  outline: 4px solid #1aebff;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+}
+
+.slidegrid-high-contrast-black
+  .grid-frame-view-inner-container-class:hover
+  .grid-content-view-visible-class {
+  outline: 1px solid #1aebff;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+}
+
+.slidegrid-high-contrast-black
+  .grid-frame-view-visible-class.grid-frame-view-selected-class.grid-frame-view-active-focus-class
+  .grid-content-view-visible-class:focus {
+  outline: 4px solid #1aebff;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+}
+
+/* ---------------------- high contrast black mode end ---------------------- */
+
+.revisiontracking-view-hidden-class {
+  display: none;
+}
+
+.revisiontracking-background-view-class {
+  position: absolute;
+  right: -8px;
+  bottom: -4px;
+  background-color: #d9ecee;
+}
+
+.revisiontracking-container-class {
+  position: relative;
+  margin-left: 8px;
+  float: left;
+}
+
+.revisiontracking-container-vertical-class {
+  display: flex;
+  flex-direction: row;
+  bottom: 0px;
+  position: absolute;
+  width: max-content;
+  margin-left: 0px;
+}
+
+.revisiontracking-pawn-container-class {
+  position: relative;
+  height: 16px;
+  width: 16px;
+  float: left;
+}
+
+.revisiontracking-pawn-class {
+  height: 16px;
+  width: 16px;
+}
+
+.revisiontracking-icon-class {
+  height: 16px;
+  width: 16px;
+  background-color: #00828c;
+  fill: white;
+}
+
+.modern-revisiontracking-icon-class {
+  height: 10px;
+  width: 10px;
+  margin-left: 3px;
+  margin-bottom: 3px;
+  margin-top: 3px;
+  margin-right: 3px;
+}
+
+.modern-revisiontracking-svg-path-class {
+  fill: #006bff;
+  stroke: white;
+  stroke-width: 2;
+  stroke-opacity: 0.8;
+}
+
+.revisiontracking-flyout-container-class {
+  position: relative;
+  border: transparent 1px solid;
+  max-width: 180px;
+  height: 14px;
+  background-color: #00828c;
+  color: white;
+  font-family: Segoe UI Semibold, Segoe UI, sans-serif;
+  font-size: 10px;
+  text-align: center;
+  float: left;
+  margin-left: 2px;
+  z-index: 999;
+  padding-right: 2px;
+  padding-left: 2px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.modern-revisiontracking-flyout-container-class {
+  position: relative;
+  border: transparent 1px solid;
+  max-width: 180px;
+  height: 14px;
+  background-color: #006bff;
+  color: white;
+  font-family: Segoe UI Semibold, Segoe UI, sans-serif;
+  font-size: 10px;
+  text-align: center;
+  float: left;
+  margin-left: 2px;
+  z-index: 999;
+  padding-right: 2px;
+  padding-left: 2px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .revisiontracking-icon-class {
+    -ms-high-contrast-adjust: none;
+    background-color: window !important;
+    fill: windowText !important;
+  }
+
+  .transition-or-animation-icon-class {
+    -ms-high-contrast-adjust: none;
+    fill: windowText !important;
+  }
+
+  .comment-icon-class {
+    -ms-high-contrast-adjust: none;
+    fill: windowText !important;
+  }
+
+  .grid-frame-view-num-comments-on-comment-icon {
+    -ms-high-contrast-adjust: none;
+    color: window !important;
+  }
+
+  .presence-flyouts-collapsed-class,
+  .presence-flyout-expanded-class {
+    border: solid 1px;
+  }
+
+  .modern-revisiontracking-svg-path-class {
+    -ms-high-contrast-adjust: none;
+    fill: windowText !important;
+    stroke: windowText !important;
+    stroke-opacity: 1 !important;
+  }
+}
+
+@media screen and (forced-colors: active) {
+  .revisiontracking-icon-class {
+    forced-color-adjust: none;
+    background-color: Canvas !important;
+    fill: CanvasText !important;
+  }
+
+  .transition-or-animation-icon-class {
+    forced-color-adjust: none;
+    fill: CanvasText !important;
+  }
+
+  .comment-icon-class {
+    forced-color-adjust: none;
+    fill: CanvasText !important;
+  }
+
+  .grid-frame-view-num-comments-on-comment-icon {
+    forced-color-adjust: none;
+    color: Canvas !important;
+  }
+
+  .presence-flyouts-collapsed-class,
+  .presence-flyout-expanded-class {
+    border: 1px solid CanvasText;
+  }
+
+  .modern-revisiontracking-svg-path-class {
+    forced-color-adjust: none;
+    fill: CanvasText !important;
+    stroke: CanvasText !important;
+    stroke-opacity: 1 !important;
+  }
+}
+
+.rtl-class .revisiontracking-container-class {
+  float: right;
+  margin-right: 8px;
+  margin-left: auto;
+}
+
+.rtl-class .revisiontracking-pawn-container-class {
+  float: right;
+}
+
+.rtl-class .revisiontracking-flyout-container-class {
+  float: right;
+  margin-right: 2px;
+  margin-left: auto;
+}
+
+.rtl-class .modern-revisiontracking-flyout-container-class {
+  float: right;
+  margin-right: 2px;
+  margin-left: auto;
+}
+
+/* Persona colors supported in SlideGrid */
+.persona-color-498205 {
+  background-color: #498205;
+}
+
+.persona-color-e3008c {
+  background-color: #e3008c;
+}
+
+.persona-color-0078d4 {
+  background-color: #0078d4;
+}
+
+.persona-color-986f0b {
+  background-color: #986f0b;
+}
+
+.persona-color-a4262c {
+  background-color: #a4262c;
+}
+
+.persona-color-4f6bed {
+  background-color: #4f6bed;
+}
+
+.persona-color-c239b3 {
+  background-color: #c239b3;
+}
+
+.persona-color-038387 {
+  background-color: #038387;
+}
+
+.persona-color-393939 {
+  background-color: #393939;
+}
+
+.persona-color-0b6a0b {
+  background-color: #0b6a0b;
+}
+
+.persona-color-8764b8 {
+  background-color: #8764b8;
+}
+
+.persona-color-750b1c {
+  background-color: #750b1c;
+}
+
+.persona-color-7a7574 {
+  background-color: #7a7574;
+}
+
+.persona-color-004e8c {
+  background-color: #004e8c;
+}
+
+.persona-color-8e562e {
+  background-color: #8e562e;
+}
+
+.persona-color-69797e {
+  background-color: #69797e;
+}
+
+.persona-color-881798 {
+  background-color: #881798;
+}
+
+.persona-color-005b70 {
+  background-color: #005b70;
+}
+
+.transition-or-animation-icon-class,
+.comment-icon-class {
+  position: relative;
+  height: 16px;
+  width: 16px;
+  fill: #3a3a38;
+  fill-opacity: 1;
+  z-index: 1;
+}
+
+.rtl-class .grid-frame-view-transition-or-animation-icon-container-class {
+  float: left;
+  margin-left: auto;
+  margin-right: 8px;
+}
+
+/*# sourceMappingURL=PPTGridComponent.css.map*/

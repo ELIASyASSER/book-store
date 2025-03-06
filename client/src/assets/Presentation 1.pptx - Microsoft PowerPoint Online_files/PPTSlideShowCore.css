@@ -1,0 +1,43 @@
+svg.svm-interactive-element-focus-class:focus-within {
+  outline: solid 1px white;
+  border: solid 1px black;
+}
+
+.show-accessibility-element {
+  position: absolute;
+  left: -10px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.slide-container-class {
+  margin-top: 4px;
+}
+
+.slideshowcore-tooltip
+{
+  display: none;
+  position: absolute;
+  z-index: 1000000;
+  max-width: 300px;
+  overflow-wrap: break-word;
+  word-break: break-all;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 2px;
+  padding: 2px;
+  font-family: "Segoe UI", "Segoe UI Web", Arial, Verdana, sans-serif;
+  font-size: 9pt;
+}
+
+@media (forced-colors: active) {
+  .slideshowcore-tooltip
+  {
+    color: CanvasText;
+    background-color: Canvas;
+    border-color: CanvasText;
+  }
+}

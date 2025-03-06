@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 import  validator from "validator"
 
-
 const addressDetails = new mongoose.Schema({
     fullAddress:{
         type:String,
@@ -58,13 +57,18 @@ const orders_Schema = new mongoose.Schema({
             validator:validator.isEmail,
             message:"please enter correct email"
         }
+        
 
     },
     createdAt:{
         type:Date,
         default:Date.now
     },
-    orderData:[{type:mongoose.Schema.Types.ObjectId,ref:"Book"}]
+    orderData:[{type:mongoose.Schema.Types.ObjectId,ref:"Book"}],
+    
+    countofItems:{
+        type:Number
+    }
 
 
 },{timestamps:true})

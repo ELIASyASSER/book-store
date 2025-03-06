@@ -7,6 +7,7 @@ import { logAdminApi } from './features/loginAdmin'
 export const store  = configureStore({
     reducer:{
         shopping:AddingSlice,
+        
         [bookApi.reducerPath]:bookApi.reducer,
         [ordersApi.reducerPath]:ordersApi.reducer,
         [logAdminApi.reducerPath]:logAdminApi.reducer

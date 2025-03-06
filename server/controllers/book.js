@@ -2,21 +2,26 @@
 import bookModel from "../models/bookModel.js"
 
 const sendBook =async (req,res,next)=>{
+
     try {
+
         const imageUrl = req.file.path
         const data = {
             ...req.body,
             coverImage:imageUrl
         }
-        console.log(data)
+        
         const books =  new bookModel(data);
         await books.save()
 
         res.status(201).send(books)
+
     } catch (error) {
         console.log(error.message)
         next(error)
     }
+
+
 }
 
 const getSingleBook = async (req,res,next)=>{
@@ -43,7 +48,10 @@ const updateBook = async(req,res,next)=>{
         if(req.file){
             updatedData.coverImage = req.file.path
         }
-        const updatedBook = await bookModel.findOneAndUpdate({_id:id},updatedData,{new:true,runValidators:true})
+        const updatedBook = await bookModel.findOneAndUpdate({_id:id},updatedData,{
+            new:true,
+            runValidators:true
+        })
         // {id:id,updatedData},{}
         
         if(!updatedBook){

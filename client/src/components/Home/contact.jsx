@@ -50,8 +50,8 @@ const Contact = () => {
           <div className="w-full md:w-1/3 text-center md:text-left">
             <h4 className="text-2xl font-semibold text-gray-800 mb-6">Get in Touch</h4>
             <p className="text-gray-600 mb-4">Phone:</p>
-            <span className="block text-gray-700 font-medium mb-2">+00 115 29 291 219</span>
-            <span className="block text-gray-700 font-medium mb-6">+00 115 29 291 219</span>
+            <span className="block text-gray-700 font-medium mb-2">+20 115 604 85 66</span>
+            {/* <span className="block text-gray-700 font-medium mb-6">+00 115 29 291 219</span> */}
 
             <h4 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Where We Are</h4>
             <address className="text-gray-600 leading-loose">

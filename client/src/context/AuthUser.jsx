@@ -8,8 +8,11 @@ const SERVER_URL = import.meta.env.VITE_SERVER_URL
 const AuthContext = createContext()
 const provider = new GoogleAuthProvider();
 export const AuthProvider = ({children})=>{
+
+
     const [loading,setLoading] = useState(true)
     const [isSubscribe,setIsSubscribe] = useState(true)
+
     const[currentUser,setCurrentUser] = useState(null)
     const [profileImg,setProfileImg] = useState(null)
 
@@ -114,6 +117,7 @@ export const AuthProvider = ({children})=>{
         profileImg,
         loading
     }
+    
     return <AuthContext.Provider value={value}>
         {children}
     </AuthContext.Provider>

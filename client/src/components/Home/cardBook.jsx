@@ -2,8 +2,8 @@ import { BsCart3 } from "react-icons/bs"
 import { useDispatch} from "react-redux"
 import { addToCart } from "../../redux/features/addCart"
 import { Link } from "react-router-dom"
-import { useAuth } from "../../context/AuthUser"
 const CardBook = (props) => {
+
     const dispatch = useDispatch()
     const handleAdding = ()=>{
         dispatch(addToCart(props.book))
@@ -22,7 +22,7 @@ const CardBook = (props) => {
                                     <p className='leading-loose text-[15px] font-primary  text-gray-500 break-words w-[180px]'>{props.book.description.slice(0,55)}...</p>
                                     <div className='prices my-4'>
                                         <span className='price mr-5 font-semibold text-xl'>${props.book.newPrice}</span>
-                                         {props.book.offer&&<del className='tracking-widest old-price '>${props.book.oldPrice}</del>}
+                                            {props.book.offer&&<del className='tracking-widest old-price '>${props.book.oldPrice}</del>}
                                     </div>
                                     <button className='btn-primary' onClick={handleAdding}><BsCart3 className='mr-2'/>  Add To Cart</button>
                                 </div>

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
@@ -12,12 +11,16 @@ import { MdExitToApp } from 'react-icons/md';
     const navigate = useNavigate()
     const isOffer = watch("offer")
     const onSubmit = async(data)=>{
+
       const formData = new FormData();
       formData.append('title', data.title);
+
       formData.append('description', data.description);
       formData.append('category', data.category);
+      
       formData.append('oldPrice', data?.oldPrice||0);
       formData.append('newPrice', data.newPrice);
+
       formData.append('offer', data.offer);  // Default to false if unchecked
       formData.append('cover', data.Image[0]);  // Append the file itself
       

@@ -3,12 +3,12 @@ import jwt from "jsonwebtoken"
 const authenticateAdmin = (req,res,next)=>{
     const token = req.headers.authorization
     if(!token || !token.startsWith("Bearer")){
-        return next("Invalid token")
+        return next(new Error("Invalid token"))
     }
     const tokenCode = token.split(" ")[1]
 
     jwt.verify(tokenCode,process.env.JWT_SECRET,(err,data)=>{
-        if(err) return next("Invalid Credentials error with the token")
+        if(err) return next(new Error("Invalid Credentials error with the token"))
         req.user = data
         next()
     })

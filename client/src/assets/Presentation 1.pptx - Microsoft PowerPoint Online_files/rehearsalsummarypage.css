@@ -1,0 +1,908 @@
+#summaryWrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+#summaryContainer {
+  width: 80%;
+  max-width: 1000px;
+  height: 90%;
+  max-height: 626px;
+  border-radius: 2px;
+  box-shadow: 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18),
+    0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22);
+  background-color: #ffffff;
+  font-family: "Segoe UI", sans-serif, mono-serif, proportional-serif,
+    "mono sans serif", casual, cursive, "small caps";
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  color: #000000;
+}
+
+#closeSummary {
+  width: 32px;
+  height: 32px;
+  background: white;
+  box-shadow: 0px 0px 0px transparent;
+  border: 0px solid transparent;
+  position: sticky;
+  position: -webkit-sticky;
+  float: top;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+#closeSummary:active {
+  background: #d2d0ce;
+}
+
+#closeSummary:focus {
+  outline: 1px solid #605e5c;
+}
+
+#closeSummary:hover {
+  background: #edebe9;
+}
+
+#summaryContainer a.learnMore {
+  font-size: 14px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #b7472a;
+}
+
+.learnMore {
+  display: block;
+  margin-top: 18px;
+  text-decoration: none;
+}
+
+#rehearsalReportTitle {
+  padding-top: 2px;
+  font-size: 20px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #b7472a;
+  margin: 0px;
+}
+
+#share {
+  width: 69px;
+  margin-right: 15px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#share a {
+  width: 69px;
+  height: 19px;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 15px;
+}
+
+#centerContainer {
+  padding-left: 21px;
+  padding-right: 20px;
+  display: inline-block;
+  overflow-y: auto;
+}
+
+/* Display up button on top and down button on bottom */
+#centerContainer::-webkit-scrollbar-button:start:decrement,
+#centerContainer::-webkit-scrollbar-button:end:increment {
+  display: block;
+}
+
+/* Hide down button on top and up button on bottom */
+#centerContainer::-webkit-scrollbar-button:vertical:start:increment,
+#centerContainer::-webkit-scrollbar-button:vertical:end:decrement {
+  display: none;
+}
+
+#feedbackButton {
+  width: 100px;
+  margin-right: 23px;
+}
+
+#downloadButton {
+  width: 150px;
+  margin-right: 1px;
+}
+
+#downloadButton,
+#feedbackButton {
+  height: 32px;
+  background: white;
+  box-shadow: 0px 0px 0px transparent;
+  border: 0px solid transparent;
+  text-shadow: 0px 0px 0px transparent;
+  font-family: "Segoe UI", sans-serif, mono-serif, proportional-serif,
+    "mono sans serif", casual, cursive, "small caps";
+  font-size: 14px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0px;
+  color: #b7472a;
+  text-align: center;
+  padding: 0;
+  cursor: default;
+  position: relative;
+  top: 13px;
+}
+
+.learnMore:active,
+#downloadButton:active,
+#feedbackButton:active {
+  color: #740912;
+}
+
+.learnMore:active,
+.learnMore:hover,
+#downloadButton:active,
+#downloadButton:hover,
+#feedbackButton:active,
+#feedbackButton:hover {
+  text-decoration: underline;
+}
+
+.learnMore:focus,
+#downloadButton:focus,
+#feedbackButton:focus {
+  outline: 1px solid #605e5c;
+}
+
+#tryAgainButton {
+  min-width: 130px;
+  max-width: 200px;
+  padding-left: 5px;
+  padding-right: 5px;
+  height: 32px;
+  border-radius: 2px;
+  border: solid 1px #b7472a;
+  background-color: #b7472a;
+  font-family: "Segoe UI", sans-serif, mono-serif, proportional-serif,
+    "mono sans serif", casual, cursive, "small caps";
+  font-size: 14px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 100%;
+  letter-spacing: normal;
+  color: white;
+  display: inline-block;
+  text-align: center;
+  margin-right: 45px;
+  cursor: default;
+  position: relative;
+  top: 13px;
+}
+
+#tryAgainButton:active {
+  background: #740912;
+}
+
+#tryAgainButton:hover {
+  background: #a92b1a;
+}
+
+#tryAgainButton:focus {
+  outline: 2px solid #b7472a;
+  outline-offset: 1px;
+}
+
+.checkIcon {
+  color: #71a100;
+  font-size: 24px;
+  margin-top: 8px;
+  margin-right: 10px;
+}
+
+.praiseBox {
+  display: flex;
+}
+
+.leftColumn {
+  width: 300px;
+  margin-right: 20px;
+  float: left;
+}
+
+.centerColumn {
+  width: 300px;
+  margin-right: 20px;
+  float: left;
+}
+
+.rightColumn {
+  width: 300px;
+  position: relative;
+  float: left;
+}
+
+.summaryBox {
+  border-radius: 2px;
+  border: solid 1px #e6e6e6;
+  margin-bottom: 20px;
+  padding-left: 16px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-right: 16px;
+}
+
+.summaryBox .subtitle {
+  font-size: 14px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  color: #252423;
+}
+
+.summaryBox .title {
+  font-size: 16px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  color: #252423;
+  margin: 0px;
+}
+
+.newFeaturetag {
+  font-family: "Segoe UI";
+  font-size: 11px;
+  line-height: 11px;
+  text-transform: uppercase;
+  color: #a63f26;
+  font-weight: 600;
+  background: rgba(240, 216, 210, 1);
+  border-radius: 3px;
+  padding: 4px 5px;
+  float: right;
+  margin-left: 4px;
+}
+
+.betaFeatureTag {
+  font-size: 11px;
+  line-height: 11px;
+  text-transform: uppercase;
+  color: #a63f26;
+  font-weight: 600;
+  background: rgba(240, 216, 210, 1);
+  border-radius: 3px;
+  padding: 4px 5px;
+  float: right;
+  margin-left: 130px;
+  margin-bottom: 3px;
+}
+
+.pronunciationInfo {
+  padding-left: 4px;
+  color: #8a8886;
+}
+
+.pronunciationTitle {
+  display: flex;
+}
+
+.pronunciationTooltip {
+  font-size: 12px;
+  line-height: 20px;
+  color: #605e5c;
+}
+
+.summaryBox p {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.summaryBoxSeparator {
+  border-top: solid 1px #e5e5e5;
+  margin-bottom: 17px;
+}
+
+#summaryDetails {
+  display: flex;
+}
+
+#paceSpeed {
+  margin-left: auto;
+  margin-right: auto;
+  width: 214px;
+  height: 94px;
+  background-color: blue;
+}
+
+#totalTimeSpentValue {
+  margin-top: 10px;
+  font-size: 32px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 0.59;
+  letter-spacing: normal;
+  color: #484644;
+  margin-bottom: 7px;
+}
+
+.slidesRehearsedValue {
+  margin-top: 10px;
+  font-size: 32px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 0.59;
+  letter-spacing: normal;
+  color: #484644;
+  margin-bottom: 7px;
+}
+
+.summaryDetailsFirstColumn {
+  margin-right: 50px;
+}
+
+.fillerProgress {
+  height: 20px;
+  width: 10px;
+  margin-bottom: 10px;
+  float: left;
+  transition: all 0.3s ease-in-out;
+}
+
+.fillerProgressLine {
+  clear: both;
+}
+
+.progressContainer {
+  display: flex;
+  padding-left: 5px;
+  margin-top: 10px;
+}
+
+.progressLabels {
+  text-align: right;
+}
+
+.fillerWord {
+  width: 60px;
+  height: 20px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.sensitiveWord {
+  width: 120px;
+  height: 20px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.fillerValue {
+  margin-left: 10px;
+  float: left;
+}
+
+.sensitiveProgress {
+  width: 10px;
+  background-color: #7bddef;
+}
+
+.noBottomMargin {
+  margin-bottom: 0px;
+}
+
+.originalityItem {
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.originalityItemLeft {
+  margin-right: 5px;
+}
+
+.originalityItem img {
+  width: 118px;
+  height: 70px;
+  border: solid 1px #f3f2f1;
+}
+
+.infoTag {
+  font-size: 16px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#topContainer,
+#tooShortNotification {
+  padding-left: 21px;
+  padding-right: 1px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+#tooShortNotification {
+  padding-right: 39px;
+}
+
+.tooShortNotificationText {
+  position: absolute;
+  top: 50%;
+  width: auto;
+  transform: translateY(-50%);
+  margin-left: 23px;
+}
+
+#tooShortNotificationContent {
+  height: 42px;
+  width: 100%;
+  background: rgb(243, 242, 241);
+  border-radius: 2px;
+  position: relative;
+}
+
+#tooShortNotificationSpan {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 13px;
+  padding-left: 10px;
+  width: 100%;
+}
+
+#topLeftContainer {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding-top: 13px;
+}
+
+#topRightContainer {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.wpmLabel {
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.67;
+  letter-spacing: normal;
+  color: #605e5c;
+}
+
+.gauge-container {
+  position: relative;
+  width: 260px;
+  height: 87px;
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.gauge-a {
+  z-index: 1;
+  position: absolute;
+  background-color: rgba(240, 240, 240, 1);
+  width: 174px;
+  height: 87px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 250px 250px 0px 0px;
+}
+
+.gauge-b {
+  z-index: 3;
+  position: absolute;
+  background-color: white;
+  width: 134px;
+  height: 67px;
+  top: 20px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 250px 250px 0px 0px;
+}
+
+.gauge-c {
+  z-index: 2;
+  position: absolute;
+  background-color: rgb(119, 214, 114);
+  width: 174px;
+  height: 87px;
+  top: 87px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 0px 0px 200px 200px;
+  transform-origin: center top;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+}
+
+.gauge-data {
+  z-index: 4;
+  position: absolute;
+  width: 174px;
+  height: 87px;
+  top: 35px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gauge-labels {
+  z-index: 4;
+  position: absolute;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  font-size: 10px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-family: "Segoe UI", sans-serif, mono-serif, proportional-serif,
+    "mono sans serif", casual, cursive, "small caps";
+  line-height: 9px;
+  letter-spacing: normal;
+  color: #252423;
+}
+
+.gauge-labels .slow-label {
+  bottom: 2px;
+  position: absolute;
+  right: 221px;
+}
+
+.gauge-labels .min-thresh-label {
+  left: 20%;
+  position: absolute;
+}
+
+.gauge-labels .max-thresh-label {
+  left: 70%;
+  position: absolute;
+}
+
+.gauge-labels .fast-label {
+  bottom: 2px;
+  left: 222px;
+  position: absolute;
+}
+
+#outer-card {
+  background: rgb(255, 255, 255);
+  border-radius: 2px;
+  border: 1px solid rgb(230, 230, 230);
+  box-shadow: none;
+  margin-bottom: 20px;
+  height: auto;
+  padding-top: 8px;
+  padding-bottom: 4px;
+}
+
+#thankYou-card {
+  background: rgb(255, 255, 255);
+  border-radius: 2px;
+  border: 1px solid rgb(230, 230, 230);
+  box-shadow: none;
+  margin-bottom: 20px;
+  height: auto;
+}
+
+#thankYou-Illustration {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding-top: 14px;
+}
+
+#thankYou-Img {
+  justify-content: flex-start;
+  align-content: flex-start;
+  flex-basis: 25%;
+  padding-right: 20px;
+}
+
+#thankYou-Text {
+  font-family: "Segoe UI", sans-serif, mono-serif, proportional-serif,
+    "mono sans serif", casual, cursive, "small caps";
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  color: #000000;
+  flex-basis: 70%;
+  justify-content: flex-end;
+  align-content: flex-end;
+}
+
+#rating-stars {
+  margin-left: 4.8px;
+}
+
+.coachSuggestsLabel {
+  margin-top: 12px !important;
+  margin-bottom: 2px !important;
+  color: #252423;
+}
+
+.coachSuggestsSettingsLabel {
+  color: #006ebe;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#coachSuggestSummaryBox {
+  position: relative;
+  background: #f3f2f1;
+}
+
+/* All high contrast styling rules in IE10+/Edge */
+@media screen and (-ms-high-contrast: active) {
+  #summaryContainer {
+    border: 1px solid #ffffff;
+  }
+
+  #pacingGauge {
+    -ms-high-contrast-adjust: none;
+  }
+
+  #tryAgainButton {
+    border: solid 1px #ffffff;
+  }
+
+  #tryAgainButton:hover,
+  #tryAgainButton:focus {
+    -ms-high-contrast-adjust: none;
+    color: #000000;
+    background: #ffffff;
+  }
+
+  #Fill-1 {
+    fill: #ffffff;
+  }
+
+  .label-title {
+    fill: WindowText;
+  }
+
+  .fillerProgress {
+    background-color: #ffffff;
+    fill: #ffffff;
+  }
+
+  .gauge-a {
+    background-color: rgba(117, 117, 117, 0.4);
+  }
+
+  .gauge-b {
+    background-color: Window;
+  }
+
+  #pacingValue {
+    color: WindowText;
+  }
+
+  .wpmLabel {
+    color: WindowText;
+    font-weight: 600;
+  }
+
+  .slow-label {
+    color: WindowText;
+  }
+
+  .min-thresh-label {
+    color: WindowText;
+  }
+
+  .max-thresh-label {
+    color: WindowText;
+  }
+
+  .fast-label {
+    color: WindowText;
+  }
+
+  #pacingYLabel {
+    color: white;
+  }
+
+  .summaryBox .subtitle {
+    -ms-high-contrast-adjust: none;
+    color: WindowText;
+  }
+
+  .fillerWords {
+    border: 1px solid ButtonText;
+    color: ButtonText;
+    background-color: ButtonFace;
+  }
+
+  .crutchWords {
+    border: 1px solid ButtonText;
+    color: ButtonText;
+    background-color: ButtonFace;
+  }
+}
+
+/* Black-on-white high contrast styling rules in IE10+/Edge */
+@media screen and (-ms-high-contrast: black-on-white) {
+  #summaryContainer {
+    border: 1px solid #000000;
+  }
+
+  #pacingGauge {
+    -ms-high-contrast-adjust: none;
+  }
+
+  #tryAgainButton {
+    border: solid 1px #000000;
+  }
+
+  #tryAgainButton:hover,
+  #tryAgainButton:focus {
+    -ms-high-contrast-adjust: none;
+    color: #ffffff;
+    background: #000000;
+  }
+
+  #Fill-1 {
+    fill: #000000;
+  }
+
+  .label-title {
+    fill: WindowText;
+  }
+
+  .fillerProgress {
+    background-color: #000000;
+    fill: #000000;
+  }
+}
+
+@media screen and (forced-colors: active) {
+  #summaryContainer {
+    border: 1px solid CanvasText;
+  }
+
+  #pacingGauge {
+    forced-color-adjust: none;
+  }
+
+  #tryAgainButton {
+    border: solid 1px CanvasText;
+  }
+
+  #tryAgainButton:hover,
+  #tryAgainButton:focus {
+    forced-color-adjust: none;
+    color: Canvas;
+    background: CanvasText;
+    outline: 2px solid Highlight;
+  }
+
+  #Fill-1 {
+    fill: CanvasText;
+  }
+
+  .label-title {
+    fill: CanvasText;
+  }
+
+  .fillerProgress {
+    background-color: CanvasText;
+    fill: CanvasText;
+  }
+
+  .gauge-a {
+    background-color: Highlight;
+    opacity: 0.3;
+  }
+
+  .gauge-b {
+    background-color: Canvas;
+  }
+
+  .gauge-c {
+    background-color: Highlight;
+  }
+
+  #pacingValue {
+    color: CanvasText;
+  }
+
+  .wpmLabel {
+    color: CanvasText;
+    font-weight: 600;
+  }
+
+  .slow-label {
+    color: CanvasText;
+  }
+
+  .min-thresh-label {
+    color: CanvasText;
+  }
+
+  .max-thresh-label {
+    color: CanvasText;
+  }
+
+  .fast-label {
+    color: CanvasText;
+  }
+
+  #pacingYLabel {
+    color: white;
+  }
+
+  .summaryBox .subtitle {
+    forced-color-adjust: none;
+    color: CanvasText;
+  }
+
+  .fillerWords {
+    border: 1px solid ButtonText;
+    color: ButtonText;
+    background-color: ButtonFace;
+  }
+
+  .crutchWords {
+    border: 1px solid ButtonText;
+    color: ButtonText;
+    background-color: ButtonFace;
+  }
+}

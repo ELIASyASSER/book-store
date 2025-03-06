@@ -11,11 +11,14 @@ const Register = () => {
   const [message,setMessage] = useState("")
   const navigate = useNavigate()
   const {registerUser,signInWithGoogle} = useAuth()
+
     const {
+
       register,
       handleSubmit,
       formState: { errors },
-    } = useForm()
+
+      } = useForm()
     const onSubmit = async(data) => {
       try {
         await registerUser(data.email,data.password)
@@ -49,6 +52,8 @@ const Register = () => {
           position: "center-center",
           icon: "success",
           title: "You  Sign in Successfully ",
+
+
           showConfirmButton: false,
           timer: 1500
           });

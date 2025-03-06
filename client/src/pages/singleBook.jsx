@@ -15,7 +15,11 @@ const SingleBook = () => {
     },[])
     const dispatch = useDispatch()
     const {bookId} = useParams()
+
+
     const {data,isError,isLoading} = useGetSingleBookQuery(bookId)
+
+
     const handleAdding = (product)=>{
         dispatch(addToCart(product))
     }
@@ -27,6 +31,8 @@ const SingleBook = () => {
     if(isError) return <div>Error Happening while Loading ...</div>
 
     else{
+
+
         return (
         <main className="shadow-2xl  lg:w-2/3 lg:mx-auto p-6  rounded-md font-primary">
             <h1 className="text-3xl font-bold mb-8 mx-auto ">
@@ -54,7 +60,10 @@ const SingleBook = () => {
 
         </main>
 
-)
+            )
+
+
+
 }}
 
 export default SingleBook

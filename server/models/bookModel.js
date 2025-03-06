@@ -1,7 +1,5 @@
 import mongoose from "mongoose";
 const bookSchema = new mongoose.Schema({
-
-
     title:{
         type:String,
         required:[true,'please enter book name'],
@@ -10,10 +8,8 @@ const bookSchema = new mongoose.Schema({
     },
 
     description:{
-
         type:String,
         required:[true,"please enter book description"],
-
         minLength:[100,"Please enter 100 characters At Least The Book Description Is Too short"],
         maxLength:[1000,"The Book Name Is Too Long maxLength 1000 charachters"]
 
@@ -44,14 +40,20 @@ const bookSchema = new mongoose.Schema({
         type:Number,
         required:[true,"please enter the  price"]
     },
+
     createdAt:{
         type:Date,
         default:Date.now
     }
     ,
+    count:{
+        type:Number,
+        default:1
+    }
 
 
 },{timestamps:true})
+
 bookSchema.pre("findOneAndUpdate",function (next) {
     if(!this.offer){
         this.oldPrice = 0;
@@ -59,5 +61,6 @@ bookSchema.pre("findOneAndUpdate",function (next) {
     next()
     
 })
+
 const bookModel = mongoose.model("Book",bookSchema)
 export default bookModel

@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0171)https://oauth.officeapps.live.com/oa/WacOAuth.aspx?replyUrl=https://powerpoint.officeapps.live.com&usid=5c737d06-65f9-4190-9b91-2da83c280b52&WacUserType=WOPI&sv=1&msalv3=1 -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>
+
+</title>
+		<style id="sharedauthstyles" nonce=""></style>
+		<script type="text/javascript" nonce="">
+			function loadBackupScript() {
+				var backupScript = document.createElement('script');
+				backupScript.setAttribute("data-allowedapps", "5a4eed13-c4c4-4b4c-9506-334ab200bf31;93d53678-613d-4013-afc1-62e9e444a0a5");
+				backupScript.setAttribute("data-allowedaudiences", "e03a13ee-9730-4cae-8525-47559c8cf18a;https://augloop.office.com/v2;394866fc-eedb-4f01-8536-3ff84b16be2a;liveprofilecard.access;https://shredder-us.osi.office.net/;https://substrate.office.com;https://pptservicescast.officeapps.live.com;officespeech.access;https://dcg.microsoft.com/;https://consentservice.microsoft.com/web;https://consentservice.microsoft.com/checkin;https://attributes.engagement.office.com;84a0e9dd-6e58-4aad-82af-ebe485acd09d/.default;84a0e9dd-6e58-4aad-82af-ebe485acd09d;https://immersivereader.cloud.microsoft;");
+				backupScript.setAttribute("data-origin", "https://powerpoint.officeapps.live.com");
+				backupScript.setAttribute("data-scriptload", "PRODUCTION.100: 20241211.1");
+				script.setAttribute("fetchpriority", "high");
+				backupScript.id = "sharedauthscript";
+				backupScript.src = "https://wise-m-backup.public.onecdn.static.microsoft/wise/owl/sharedauthclientmsal.9847058d46a5c575b680.js";
+				backupScript.integrity = "sha384-jpPOVFWOlNIQvoOGv3qjFBGLKLXhDPDKTL/0cjZW3V99k9rz18T5OzBpSLZOz7jH";
+				backupScript.nonce = "30274521-2a7f-48ed-9967-e2f0421651ce";
+				backupScript.crossOrigin = "anonymous";
+				script.onload = function () {
+					if ("True" === "True") {
+						logLoadScriptResult(true, true, performance.now() - startTime);
+					}
+				};
+				script.onerror = function () {
+					if ("True" === "True") {
+						logLoadScriptResult(false, true, performance.now() - startTime);
+					}
+				};
+				document.head.appendChild(backupScript);
+			}
+
+			function loadScript() {
+				var script = document.createElement('script');
+				script.setAttribute("data-allowedapps", "5a4eed13-c4c4-4b4c-9506-334ab200bf31;93d53678-613d-4013-afc1-62e9e444a0a5");
+				script.setAttribute("data-allowedaudiences", "e03a13ee-9730-4cae-8525-47559c8cf18a;https://augloop.office.com/v2;394866fc-eedb-4f01-8536-3ff84b16be2a;liveprofilecard.access;https://shredder-us.osi.office.net/;https://substrate.office.com;https://pptservicescast.officeapps.live.com;officespeech.access;https://dcg.microsoft.com/;https://consentservice.microsoft.com/web;https://consentservice.microsoft.com/checkin;https://attributes.engagement.office.com;84a0e9dd-6e58-4aad-82af-ebe485acd09d/.default;84a0e9dd-6e58-4aad-82af-ebe485acd09d;https://immersivereader.cloud.microsoft;");
+				script.setAttribute("data-origin", "https://powerpoint.officeapps.live.com");
+				script.setAttribute("data-scriptload", "PRODUCTION.100: 20241211.1");
+				script.setAttribute("fetchpriority", "high");
+				script.id = "sharedauthscript";
+				script.src = "https://wise.public.cdn.office.net/wise/owl/sharedauthclientmsal.9847058d46a5c575b680.js";
+				script.integrity = "sha384-jpPOVFWOlNIQvoOGv3qjFBGLKLXhDPDKTL/0cjZW3V99k9rz18T5OzBpSLZOz7jH";
+				script.nonce = "30274521-2a7f-48ed-9967-e2f0421651ce";
+				script.crossOrigin = "anonymous";
+				script.onload = function () {
+					if ("True" === "True") {
+						logLoadScriptResult(true, false, performance.now() - startTime);
+					}
+				};
+				script.onerror = function () {
+					script.parentNode?.removeChild(script);
+					if ("True" === "True") {
+						logLoadScriptResult(false, false, performance.now() - startTime);
+					}
+					loadBackupScript();
+				};
+				document.head.appendChild(script);
+			}
+
+			function loadAjaxAndLoadScript() {
+				var ajaxScript = document.createElement('script');
+				ajaxScript.src = "https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js";
+				ajaxScript.nonce = "30274521-2a7f-48ed-9967-e2f0421651ce";
+				ajaxScript.onload = function () {
+					loadScript();
+				};
+				document.head.appendChild(ajaxScript);
+			}
+
+			function logLoadScriptResult(isSuccess, isBackup, elapsedMilliseconds) {
+				$.ajax({
+					type: "POST",
+					url: "WacOauth.aspx/LogLoadScriptResult",
+					data: JSON.stringify({ isSuccess, isBackup, elapsedMilliseconds }),
+					contentType: 'application/json; charset=utf-8',
+					dataType: 'json',
+					error: function (XMLHttpRequest, textStatus, errorThrown) {
+						console.error("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+					},
+				});
+			}
+
+			var startTime = performance.now();
+			if ("True" == "True") {
+				loadAjaxAndLoadScript();
+			} else {
+				loadScript();
+			}
+		</script><script src="./jquery-1.11.3.min.js.download"></script>
+	<script data-allowedapps="5a4eed13-c4c4-4b4c-9506-334ab200bf31;93d53678-613d-4013-afc1-62e9e444a0a5" data-allowedaudiences="e03a13ee-9730-4cae-8525-47559c8cf18a;https://augloop.office.com/v2;394866fc-eedb-4f01-8536-3ff84b16be2a;liveprofilecard.access;https://shredder-us.osi.office.net/;https://substrate.office.com;https://pptservicescast.officeapps.live.com;officespeech.access;https://dcg.microsoft.com/;https://consentservice.microsoft.com/web;https://consentservice.microsoft.com/checkin;https://attributes.engagement.office.com;84a0e9dd-6e58-4aad-82af-ebe485acd09d/.default;84a0e9dd-6e58-4aad-82af-ebe485acd09d;https://immersivereader.cloud.microsoft;" data-origin="https://powerpoint.officeapps.live.com" data-scriptload="PRODUCTION.100: 20241211.1" fetchpriority="high" id="sharedauthscript" src="./sharedauthclientmsal.9847058d46a5c575b680.js.download" integrity="sha384-jpPOVFWOlNIQvoOGv3qjFBGLKLXhDPDKTL/0cjZW3V99k9rz18T5OzBpSLZOz7jH" crossorigin="anonymous"></script><link rel="preconnect" href="https://login.microsoftonline.com/" crossorigin="anonymous"></head>
+	<body>
+		
+	
+
+<iframe class="msalSilentIframe" sandbox="allow-scripts allow-same-origin allow-forms" src="https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize?client_id=243c63a3-247d-41c5-9d83-7788c43f1c43&amp;scope=e03a13ee-9730-4cae-8525-47559c8cf18a%2F.default%20openid%20profile%20offline_access&amp;redirect_uri=https%3A%2F%2Foauth.officeapps.live.com%2Foa%2FOAuth.html&amp;client-request-id=02beb11b-c13a-4238-bfe4-01d906b5e99b&amp;response_mode=fragment&amp;response_type=code&amp;x-client-SKU=msal.js.browser&amp;x-client-VER=3.23.0&amp;x-app-name=OfficeOnline&amp;x-app-ver=PRODUCTION.100:%2020241211.1%20eventing%20V3&amp;client_info=1&amp;code_challenge=82WMFuUUir4JSzz05v8mAB-1_NseL_KK-DSTjPXz2Qs&amp;code_challenge_method=S256&amp;prompt=none&amp;domain_hint=9188040d-6c67-4c5b-b112-36a304b66dad&amp;login_hint=eliasyasser193%40gmail.com&amp;X-AnchorMailbox=UPN%3Aeliasyasser193%40gmail.com&amp;nonce=0193f43e-5368-7167-a23c-5b902305e19e&amp;state=eyJpZCI6IjAxOTNmNDNlLTUzNjctN2Y1Ni1iZGIxLTFiOTQxNTJhYmUzMiIsIm1ldGEiOnsiaW50ZXJhY3Rpb25UeXBlIjoic2lsZW50In19&amp;claims=%7B%22access_token%22%3A%7B%22xms_cc%22%3A%7B%22values%22%3A%5B%22CP1%22%5D%7D%7D%7D" style="visibility: hidden; position: absolute; height: 0px; width: 0px; border: 0px;"></iframe></body></html>

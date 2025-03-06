@@ -5,7 +5,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Navigation } from 'swiper/modules';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import CardBook from './cardBook';
 import { useGetAllBooksQuery } from '../../redux/features/bookApi';
 import Loading from '../loading';
@@ -22,6 +22,7 @@ const Books = () => {
     return (
     
     <section >
+
         <h1 className="text-3xl font-semibold mt-14">Available Books</h1>
         <select name="sellers" id="sellers" className="my-10  bg-[#EAEAEA] py-2 px-4  font-secondary text-xl hover:outline-none outline-none" onChange={(e)=>setSelectedCategory(e.target.value)} >
             {
@@ -32,6 +33,7 @@ const Books = () => {
                 })
             }
         </select>
+
         <Swiper
         
       // install Swiper modules
