@@ -30,7 +30,8 @@ app.use(express.urlencoded({extended:true}))
 //     credentials:true
 // }))
 app.use(cors({
-    origin: 'https://book-store-frontend-ten-mu.vercel.app', // Your frontend URL
+    origin: 'https://book-store-frontend-fx0q940kl-eliasyassers-projects.vercel.app', // Your frontend URL
+    
     methods: 'GET, POST, PUT, DELETE, OPTIONS',
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
