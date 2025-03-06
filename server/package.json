@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon index",
-    "addBooks":"node addBooks.js"
+    "addBooks":"node addBooks.js",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
