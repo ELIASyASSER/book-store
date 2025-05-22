@@ -7,12 +7,12 @@ import 'swiper/css/scrollbar';
 import { Navigation } from 'swiper/modules';
 import { useState } from 'react';
 import CardBook from './cardBook';
-import { useGetAllBooksQuery } from '../../redux/features/bookApi';
+import { useGetWholeBooksQuery } from '../../redux/features/bookApi';
 import Loading from '../loading';
 
 const Books = () => {
     
-    const {data:books,isError,isLoading} = useGetAllBooksQuery()
+    const {data:books,isError,isLoading} = useGetWholeBooksQuery()
     const categories = ["choose a genre","fiction","business","horror","adventure"]
     const [selectedCategory,setSelectedCategory] = useState("choose a genre")
     const filterdBooks = selectedCategory =="choose a genre"?books:books?.filter((book)=>book.category == selectedCategory)||[]

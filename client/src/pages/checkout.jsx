@@ -1,15 +1,16 @@
 import { Link, useNavigate } from "react-router-dom"
 import "./checkout.css"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useSelector,useDispatch } from "react-redux"
 
 import {clearItems} from "../redux/features/addCart"
-import { useForm } from "react-hook-form"
+import { useForm, useWatch } from "react-hook-form"
 import { useAuth } from "../context/AuthUser"
 
 import {useCreateOrderMutation} from "../redux/features/orderApi"
 import Swal  from "sweetalert2"
 import Loading from "../components/loading"
+import { MdExitToApp } from "react-icons/md"
 
 const CheckOut = () => {
     const navigate = useNavigate()
@@ -20,19 +21,20 @@ const CheckOut = () => {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm()
-
-
+        watch
+    } = useForm({mode:"onChange"})
+    const toggler = watch("terms")
     const {cartItems} = useSelector((state)=>state.shopping)
 
-
-    let orderd_books_ids = cartItems.map((book)=>{
+    let orderd_books = cartItems.map((book)=>{
         return book._id;
     })
 
-
-
-    const [checked,setChecked] = useState(false)
+    let order_count = cartItems.map((book)=>{
+        return book.count;
+    })
+    
+    
 
 
     let {newPrice,count} = cartItems.reduce((prev,curr)=>{
@@ -42,7 +44,7 @@ const CheckOut = () => {
         prev.newPrice+=(newPrice*count)
         prev.count+=count
         return prev
-        
+
     },{
         newPrice:0,
         count:0
@@ -65,18 +67,15 @@ const CheckOut = () => {
                     city:data.city,
 
                 },
-            
-                orderData:orderd_books_ids,
-
-                countofItems:count
-            
+                orderData:orderd_books,
+                count:order_count
             }
+
 
     try {
 
         await createOrder(placeanOrder).unwrap();
 
-        setTimeout(() => {
             Swal.fire({
             position: "center-center",
             icon: "success",
@@ -85,7 +84,6 @@ const CheckOut = () => {
             timer: 2000
             });
         
-        }, 4000);
 
         Swal.fire({
             title: "We recieve your order , our customer service will contact you soon",
@@ -126,7 +124,8 @@ const CheckOut = () => {
     return (
 
     
-    <main className="w-11/12 bg-gray-300 mx-auto lg:px-12 px-4 py-6 flex flex-col">
+        <main className="w-11/12 bg-gray-300 mx-auto lg:px-12 px-4 py-6 flex flex-col">
+            <Link to={"/cart"} className=' w-fit text-white bg-gray-500 px-4 py-2 rounded-lg hover:bg-purple-900'><MdExitToApp className='size-8'/></Link>
         <div className="top font-primary  lg:w-[85%] lg:mx-auto mb-4">
         <h2 className="font-semibold text-xl">Cash On Delivery</h2>
         <div className="text-slate-700 text-[18px] font-mono">
@@ -153,13 +152,13 @@ const CheckOut = () => {
                         pattern: {
                         value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
                         message: "Invalid email address",
-                        },
+                             },
                     })}
                         />
                         {errors.email&&<span className="text-red-600">{errors.email.message}</span>}
 
                 <label htmlFor="number">Phone Number</label>
-                <input type="phone" name="phone" id="number" {...register("phone",{  maxLength: 11 ,minLength:11})} required/>
+                <input type="phone" name="phone" id="number" {...register("phone",{  maxLength: 11 ,minLength:11,  pattern: {value: /^01[0-2|5][0-9]{8}$/,message: "Please enter a valid Egyptian phone number"}})} required/>
                 {errors.phone && <span className="text-red-600">Enter correct Phone Number</span>}
                 <div className="place">
                     <label htmlFor="fullAddress">Address/Street</label>
@@ -177,11 +176,11 @@ const CheckOut = () => {
                     <div className=" ml-[4%]">
                         
                     </div>
-                    <div className=" flex items-center text-[11px]  w-full font-primary  ">
-                        <input onClick={()=>setChecked((prevState)=>!prevState)} className="w-5 h-5 flex-1" type="checkbox" name="privacy" id="privacy" />
-                        <label className="w-11/12  " htmlFor="privacy">I agree to the <Link className="text-blue-600 font-bold underline">Terms &Conditions </Link>and <Link className="text-blue-600 font-bold underline">Privacy Policy</Link></label>
+                    <div className=" flex items-center text-[11px]  w-full font-primary   ">
+                        <input type="checkbox" id="privacy"{...register("terms", { required: true })}  className="flex-1"/>
+                        <label className="w-11/12  block" htmlFor="privacy">I agree to the <Link className="text-blue-600 font-bold underline">Terms &Conditions </Link>and <Link className="text-blue-600 font-bold underline">Privacy Policy</Link></label>
                     </div>
-                    <button type="submit"  className={` bg-blue-600 text-white px-3 py-2 rounded-md hover:bg-blue-900 text-lg mt-8 justify-self-end flex ${!checked?'opacity-30 pointer-events-none':''}`} disabled={checked?false:true}>Place An Order</button>
+                    <button type="submit"  className={` bg-blue-600 text-white px-3 py-2 rounded-md hover:bg-blue-900 text-lg mt-8 justify-self-end flex ${!toggler?"pointer-events-none opacity-30":""}`}>Place An Order</button>
                 </div>
 
 

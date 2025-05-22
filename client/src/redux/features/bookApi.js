@@ -1,10 +1,12 @@
 import {createApi,fetchBaseQuery} from "@reduxjs/toolkit/query/react"
+import { getTokenId } from "../../firebase/getauth"
 const serverUrl = import.meta.env.VITE_SERVER_URL
 
 export const bookApi = createApi({
     reducerPath:"bookApi",
-    baseQuery:fetchBaseQuery({baseUrl:`${serverUrl}/api`,credentials:"include",prepareHeaders:(Headers)=>{
-        const token = localStorage.getItem("ThE_SeCrEt_ToKeN")
+    baseQuery:fetchBaseQuery({baseUrl:`${serverUrl}/api`,credentials:"include",prepareHeaders:async(Headers)=>{
+        // const token = localStorage.getItem("ThE_SeCrEt_ToKeN")
+        const token = await getTokenId()
         if(token){
             Headers.set("Authorization",`Bearer ${token}`)
         }
@@ -17,6 +19,11 @@ export const bookApi = createApi({
             providesTags:["Books"]
 
         }),
+        getWholeBooks:builder.query({
+            query:()=>"/getWholeBooks",
+            providesTags:"Books"
+        })
+        ,
         getSingleBook:builder.query({
             query:(id)=>`/singleBook/${id}`,
             providesTags:(result,error,id)=>[{type:"Books",id}]
@@ -43,9 +50,8 @@ export const bookApi = createApi({
             query:(id)=>({
                 url:`/deleteBook/${id}`,
                 method:"DELETE",
-
             }),
-            invalidatesTags:[{type:"Books",id:"LIST"}]
+        invalidatesTags:[{type:"Books",id:"LIST"}]
         })
 
     })
@@ -59,6 +65,10 @@ export const {
     useGetSingleBookQuery,
     useCreateBookMutation,
     useUpdateBookMutation,
-    useDeleteBookMutation
+    useDeleteBookMutation,
+    useGetWholeBooksQuery,
+
+    
+    
 
 } = bookApi

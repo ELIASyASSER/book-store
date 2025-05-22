@@ -1,24 +1,27 @@
 import jwt from "jsonwebtoken"
-
 const authenticateAdmin = (req,res,next)=>{
-    const token = req.headers.authorization
-    if(!token || !token.startsWith("Bearer")){
-        return next(new Error("Invalid token"))
+    const {sellerToken} = req.cookies
+
+    try {
+            if(!sellerToken){
+            return res.status(403).json({success:false,message:"you can't access this admin page "})
+        }
+        const decodedToken = jwt.verify(sellerToken,process.env.JWT_SECRET_ADMIN)
+        if(decodedToken.username == process.env.ADMIN_USER_NAME){
+
+            
+            next()
+        }else{
+            return res.status(403).json({success:false,message:"you can't access admin page "})
+        }
+    } catch (error) {
+        console.log(error.message)
+        if(error instanceof jwt.TokenExpiredError){
+            return res.status(403).json({success:false,message:"Your session has been expired please log admin again"})
+        }
+        next(error)
+        
     }
-    const tokenCode = token.split(" ")[1]
-
-    jwt.verify(tokenCode,process.env.JWT_SECRET,(err,data)=>{
-        if(err) return next(new Error("Invalid Credentials error with the token"))
-        req.user = data
-        next()
-    })
-    
-    //here i use callBack you can use try catch block err in catch data in try  
-    // here use this middleware before the routes you wnat them authenticated in our expamle i will use them when creating updating deleting a book as admin only can do this operations
-
-
-
-
 
 }
 export default authenticateAdmin

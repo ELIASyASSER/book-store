@@ -10,8 +10,6 @@ const OrderPage = () => {
 
     const [success,setSuccess] = useState(false)
     const orderId = useRef(null)
-
-
     if(isError) return <div>Error happen please try again later</div>
     
     if(isLoading)return <div className="flex justify-center items-center h-[80vh] "><Loading/></div>
@@ -42,6 +40,8 @@ const OrderPage = () => {
 
             {data.map((item,idx)=>{
                 const {orderData }= item
+                console.log(item.count)
+                const amount = item.count;
                 const date = new Date(item?.createdAt).toLocaleDateString()
                 return <div key={idx} className="mb-8 overflow-hidden"> 
                     <div>
@@ -67,7 +67,8 @@ const OrderPage = () => {
                                     />
                                 </div>
                                 <p className='mb-6'>Book price:<span> ${book.newPrice}</span></p>
-                                <p className='mb-6 text-slate-500'>{data.countofItems} <span>Items</span></p>
+                                
+                                <p className='mb-6 text-slate-500 inline-flex items-center'>{amount[idx]}<span>Items</span></p>
 
                             </div>
                             </div>

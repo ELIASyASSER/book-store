@@ -1,0 +1,22 @@
+.projects table{
+    border-spacing: 0;
+    min-width: 650px;
+    text-align: center;
+}
+
+.projects td{
+    padding: 16px
+}
+.projects table tbody td{
+    border: 1px solid #eee;
+}
+.responsive-table{
+    overflow-x: auto;
+    
+}
+.projects  tr{
+    transition: 0.6s;
+}
+  .projects tbody tr:hover {
+    background-color: whitesmoke;
+  }

@@ -8,13 +8,16 @@ import  CheckOut from '../pages/checkout'
 import  SingleBook from '../pages/singleBook'
 import  PrivateRoute from './privateRoute'
 import  OrderPage from '../pages/orderPage'
-import  AdminLogin from '../pages/admin/loginAdmin'
-import  DashBoardProtection from './DashBoardProtection'
-import  DahboardBody from '../pages/admin/DahboardBody'
-import  ManageBooks from '../pages/admin/MangaeBooks'
-import  AddBook from '../pages/admin/addBook'
+import  DahboardBody from '../pages/seller/DashboardBodySeller'
+import  ManageBooks from '../pages/seller/MangaeBooks'
+import  AddBook from '../pages/seller/addBook'
 import NotFoundPage from '../components/notFound'
-import UpdateBook from '../pages/admin/updateBook'
+import UpdateBook from '../pages/seller/updateBook'
+import PricingPage from '../pages/pricing'
+import PaymentResult from '../pages/visapayment/paymentResult'
+import CheckSubscription from './checkSubscription'
+import AdminLayout from '../pages/admin/adminLayout'
+import AdminPublicRoute from './adminPublic'
 
 
 const router = createBrowserRouter([
@@ -28,6 +31,19 @@ const router = createBrowserRouter([
                 path:"",
                 element:<Home/>
             },
+            {
+                path:"/payment-result",
+                element:<PrivateRoute>
+                    <PaymentResult/>
+                </PrivateRoute>
+            },
+                {
+                path:"/pricing",
+                element:<PrivateRoute>
+                    <PricingPage/>
+                </PrivateRoute>
+                }
+            ,
             {
                 path:"/login",
                 element:<Login/>
@@ -66,44 +82,50 @@ const router = createBrowserRouter([
             {
                 path:"singleBook/:bookId",
                 element:<SingleBook/>
-            }
+            },
         ]
     },
-    {
-        path:"/admin",
-        element:<AdminLogin/>,
-
-    },
+    
+    
     {
         path:"/dashboard",
         
-        element:<DashBoardProtection>
+        element:<CheckSubscription>
             <DahboardBody/>
-        </DashBoardProtection>
+        </CheckSubscription>
     },
     {
         path:"/manage-books",
-        element:<DashBoardProtection>
+        element:<CheckSubscription>
             <ManageBooks/>
-        </DashBoardProtection>
+        </CheckSubscription>
     },
     {
         path:"/add-book",
         element:
-        <DashBoardProtection>
+        <CheckSubscription>
             <AddBook/>
-        </DashBoardProtection>
+        </CheckSubscription>
     },
     {
         path:"/update-book/:updatedBookId",
-        element:<DashBoardProtection>
+        element:<CheckSubscription>
             <UpdateBook/>
-        </DashBoardProtection>
+        </CheckSubscription>
     },
     {
         path:"*",
         element:<NotFoundPage/>
-    }
+    },
+    {
+        path:"/adminLayout",
+        element:<AdminLayout/>
+    },
+    {
+        path:"/admin",
+        element:<AdminPublicRoute/>
+
+    },
 
 ])
 

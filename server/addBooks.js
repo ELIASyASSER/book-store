@@ -1,9 +1,9 @@
 import "dotenv/config.js"
 import mongoose from "mongoose"
 import BookSchema from "./models/bookModel.js"
+import connectDb from "./db/books.js"
 
 const MONGO_URI = process.env.MONGO_URI
-console.log(MONGO_URI)
 
 const books = [
   {
@@ -103,10 +103,11 @@ const books = [
 
 const insertBooks = async()=>{
     try {
-        await mongoose.connect(MONGO_URI)
+        await connectDb(MONGO_URI);
         await BookSchema.deleteMany()
         await BookSchema.insertMany(books)
         console.log('books added successfully')
+        
 
     } catch (error) {
         console.log(error)

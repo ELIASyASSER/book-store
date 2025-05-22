@@ -65,15 +65,17 @@ const orders_Schema = new mongoose.Schema({
         default:Date.now
     },
     orderData:[{type:mongoose.Schema.Types.ObjectId,ref:"Book"}],
+
+    paymentType:{type:String,required:false,default:"COD"},
+
+    isPaid:{type:Boolean,required:true,default:false},
     
-    countofItems:{
-        type:Number
-    }
+    count:{type:Array,required:true}
 
 
 },{timestamps:true})
 
-const ordersModel = mongoose.model("Order",orders_Schema)
+const ordersModel =mongoose.models.Order|| mongoose.model("Order",orders_Schema)
 
 
 export default ordersModel

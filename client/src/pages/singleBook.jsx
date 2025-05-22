@@ -18,15 +18,14 @@ const SingleBook = () => {
 
 
     const {data,isError,isLoading} = useGetSingleBookQuery(bookId)
-
-
     const handleAdding = (product)=>{
         dispatch(addToCart(product))
     }
     const books = data?.book
-    if(!books) return <div className="flex justify-center items-center"><Loading/></div>
+    if(!books || isLoading) return <div className="flex justify-center items-center"><Loading/></div>
     
     const {title,category,coverImage,description,createdAt,newPrice,oldPrice,offer} = books
+    
     const date = new Date(createdAt).toLocaleDateString()
     if(isError) return <div>Error Happening while Loading ...</div>
 
@@ -42,7 +41,7 @@ const SingleBook = () => {
                 <img src={coverImage} alt="book image" className="bg-cover w-full" />
             </div>
             <div>
-                    <h2 className="text-2xl font-bold my-6">Author: <span className="text-gray-500 font-semibold text-xl ">Admin</span></h2>
+                    <h2 className="text-2xl font-bold my-6">Author: <span className="text-gray-500 font-semibold text-xl ">{books?.author?.username||"..."}</span></h2>
                     <time className="text-2xl font-bold mb-8 block">Published: <span className="text-gray-500 font-semibold text-xl">{date}</span></time>
                     <h2 className="text-2xl font-bold mb-8">Category: <span className="text-gray-500 font-semibold text-xl">{category}</span></h2>
                     <p className="text-2xl font-bold mb-8 w-[80%] break-words tracking-wider ">description: <span className="text-gray-500 font-semibold text-xl">{description}</span></p>

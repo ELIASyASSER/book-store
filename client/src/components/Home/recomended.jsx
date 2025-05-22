@@ -5,10 +5,10 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Autoplay, Navigation } from 'swiper/modules';
 import CardBook from "./cardBook";
-import { useGetAllBooksQuery } from "../../redux/features/bookApi";
+import { useGetWholeBooksQuery } from "../../redux/features/bookApi";
 import Loading from "../loading";
 const RecommendedBooks = () => {
-    const {data,isError,isLoading} = useGetAllBooksQuery()
+    const {data,isError,isLoading} = useGetWholeBooksQuery()
     if(isLoading) return <Loading/>
     const recommended_for_you = data?.filter((book)=>book.offer == true)||[]
 

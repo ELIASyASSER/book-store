@@ -8,12 +8,17 @@ import {fileURLToPath } from "url"
 import path from "path";
 import bookRouter from './routers/book.js'
 import ordersRouter from "./routers/orders.js"
-import userRouter from "./routers/user.js"
+import adminRoute from "./routers/adminLogin.js"
 import dashboard from "./routers/dashboard.js"
-import connection from './db/books.js'
+import paymentRoute from "./routers/paymop.js"
+import checkSubscriptionRouter from "./routers/checkSubscription.js"
+
+
+import connectDb from './db/books.js'
 import axios from "axios"
 import fs from "fs"
 import crypto from 'crypto'
+import cookieParser from 'cookie-parser'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -25,19 +30,15 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
-// app.use(cors({
-//     origin:"https://book-store-frontend-ten-mu.vercel.app/",
-//     credentials:true
-// }))
+const allowedOrigins = [process.env.CLIENT_URL,process.env.CLIENT_PRODUCTION_URL];
+
 app.use(cors({
-    origin: 'https://book-store-frontend-fx0q940kl-eliasyassers-projects.vercel.app', // Your frontend URL
-    
-    methods: 'GET, POST, PUT, DELETE, OPTIONS',
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    origin: allowedOrigins, // Your frontend URL
     credentials: true
   }));
-  
   // Handle preflight requests
+
+  app.use(cookieParser())
   app.options('*', cors());
   
   
@@ -46,7 +47,12 @@ app.use("/uploads",express.static(path.join(__dirname,"uploads")))
 
 
 //here we save the photo of profile to 
-const downladProfileImg = ()=>{
+const generateImgHash = function (url) {
+    const hash = crypto.createHash("sha256")
+    hash.update(url)
+    return hash.digest("hex")
+}
+
 
     app.post("/uploadImg",async(req,res,next)=>{
         const {urlImg} = req.body
@@ -69,7 +75,7 @@ const downladProfileImg = ()=>{
             response.data.pipe(writer)
 
             writer.on("finish",()=>{
-            return res.status(200).json({msg:"Image saved Successfully",url:`/uploads/${fileName}`})
+            return res.status(200).json({success:true,url:`uploads/${fileName}`})
 
         })
         
@@ -78,24 +84,22 @@ const downladProfileImg = ()=>{
             return next(new Error("Failed to download the image"))
             
         })
+
     } catch (error) {
         return next(error)
     }
 })
-const generateImgHash = function (url) {
-    const hash = crypto.createHash("sha256")
-    hash.update(url)
-    return hash.digest("hex")
-}
-}
 
-downladProfileImg()
+
 
 // routes
 app.use("/api",bookRouter)
+app.use("/pay",paymentRoute)
 app.use("/orders",ordersRouter)
-app.use("/admin",userRouter)
+app.use("/admin",adminRoute)
+app.use("/checkSubscription",checkSubscriptionRouter)
 app.use("/dashboard",dashboard)
+
 
 //errors handler middlewares 
 app.use(errorHandler)
@@ -103,7 +107,7 @@ app.use(errorHandler)
 const start = async()=>{
     
     try {
-        await connection(process.env.MONGO_URI)
+        await connectDb(process.env.MONGO_URI)
         console.log('database connected successfully')
         app.listen(4000,console.log("server is listening on port 4000"))
         

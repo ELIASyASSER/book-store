@@ -44,13 +44,17 @@ const bookSchema = new mongoose.Schema({
     createdAt:{
         type:Date,
         default:Date.now
-    }
-    ,
+    },
+    author:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"user",
+        
+    },
     count:{
         type:Number,
         default:1
     }
-
+    
 
 },{timestamps:true})
 
@@ -62,5 +66,5 @@ bookSchema.pre("findOneAndUpdate",function (next) {
     
 })
 
-const bookModel = mongoose.model("Book",bookSchema)
+const bookModel = mongoose.models.Book||mongoose.model("Book",bookSchema)
 export default bookModel

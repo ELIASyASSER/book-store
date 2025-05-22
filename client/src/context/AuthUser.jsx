@@ -3,7 +3,9 @@ import {  createUserWithEmailAndPassword,signInWithEmailAndPassword, signInWithP
 import { auth } from '../firebase/main.config';
 import { GoogleAuthProvider } from "firebase/auth";
 import axios from "axios"
-import Loading from '../components/loading';
+import Swal from 'sweetalert2';
+axios.defaults.withCredentials = true;
+
 const SERVER_URL = import.meta.env.VITE_SERVER_URL
 const AuthContext = createContext()
 const provider = new GoogleAuthProvider();
@@ -12,9 +14,9 @@ export const AuthProvider = ({children})=>{
 
     const [loading,setLoading] = useState(true)
     const [isSubscribe,setIsSubscribe] = useState(true)
-
     const[currentUser,setCurrentUser] = useState(null)
     const [profileImg,setProfileImg] = useState(null)
+    const [isAdmin,setIsAdmin] = useState(false)
 
     const registerUser = async(email,password)=>{
         return await createUserWithEmailAndPassword(auth, email, password)
@@ -31,7 +33,13 @@ export const AuthProvider = ({children})=>{
     const signOutUser = async ()=>{
         try {
             await signOut(auth);
-            alert("You Sign Out Successfully");
+            Swal.fire({
+                        position: "center-center",
+                        icon: "success",
+                        title: "Logged Out Successfully ",
+                        showConfirmButton: false,
+                        timer: 2000
+                        });
         } catch (error) {
             console.log(error);
             alert("failed to sign out the user");
@@ -75,34 +83,75 @@ export const AuthProvider = ({children})=>{
 
         try {
 
-            const resp = await axios.post("http://localhost:4000/uploadImg", { urlImg }, {
+            const resp = await axios.post(`${SERVER_URL}/uploadImg`, { urlImg }, {
 
                 headers: {
                     "Content-Type": "application/json", // Corrected header content type
                 },
-                timeout:5000
+                
             });
-
-            setProfileImg(`${SERVER_URL}${resp?.data?.url}`)
+            if(resp.data.success){
+                setProfileImg(`${SERVER_URL}/${resp?.data?.url}`)
+            }
         }
 
         catch (error) {
             console.log(error)
-            alert("Something went wrong while uploading the image");
+            setProfileImg(null)
+        }finally{
+            setLoading(false)
         }
 
 };
 
-    // Trigger the upload only if `urlImg` exists
-
 
     useEffect(() => {
-
-        if (currentUser?.photoURL) {
+        if (currentUser) {
             uploadImg();
         }
 
     }, [currentUser]);
+
+
+
+useEffect(()=>{
+       const adminStatus = async()=>{
+               try {
+                   const isAdmin = await fetch(`${SERVER_URL}/admin/is-auth`,{
+                       credentials:"include"
+                   })
+                   const data = await isAdmin.json()
+                   setIsAdmin(data.success)
+                   if(!data.success){
+                    Swal.fire({
+                          icon: "error",
+                          title: "Oops...",
+                          text: data.message || `Something went wrong. Try again.`,
+                        });
+                        navigate("/admin")
+                   }
+
+               } catch (error) {
+
+                   Swal.fire({
+                         icon: "error",
+                         title: "Oops...",
+                         text: error.message || `Something went wrong. Try again.`,
+                       });
+                       navigate("/admin")
+                   
+               }
+              }
+       
+              adminStatus();
+       
+       },[])
+
+
+
+
+
+
 
 
     const value = {
@@ -115,7 +164,10 @@ export const AuthProvider = ({children})=>{
         isSubscribe,
         setIsSubscribe,
         profileImg,
-        loading
+        loading,
+        isAdmin,
+        setIsAdmin
+
     }
     
     return <AuthContext.Provider value={value}>

@@ -8,14 +8,12 @@ import  {Link } from "react-router-dom";
 import  {useState } from "react";
 import  {useAuth } from "../../context/AuthUser";
 
-
-
 const Header = () => {
+
     const [openModal,setOpenModal] = useState(false)
-    const {signOutUser,currentUser,profileImg} = useAuth()    
+    const {signOutUser,currentUser,profileImg,subscription} = useAuth()    
     const {cartItems} = useSelector((state)=>state.shopping)
     const userImg = profileImg || avatar
-
     const modalLinks = [
         {href:"/",title:"Home"},
         {href:`/getOrder/${currentUser?.email}`,title:"Orders"},
@@ -23,8 +21,8 @@ const Header = () => {
     const signingLinks = [
         {href:"/register",title:"Register"},
         {href:"/login",title:"Log In"},
+        
     ]
-
 
 return (
 
@@ -38,11 +36,15 @@ return (
                                     {
 
                                         modalLinks.map((item,idx)=>{
-                                                return <Link key={idx} className="block hover:bg-[#8dc0ff98] duration-300 p-2 border-b-2 z-20" onClick={()=>setOpenModal(false)} to={item.href}>{item.title}
+                                            return <Link key={idx} className="block hover:bg-[#8dc0ff98] duration-300 p-2 border-b-2 z-20" onClick={()=>setOpenModal(false)} to={item.href}>{item.title}
                                                 </Link>
-                                                })
+                                            })
                                     
                                     }
+                                    {
+                                        currentUser && <Link to={"dashboard"} className="block hover:bg-[#8dc0ff98] duration-300 p-2 border-b-2">ٍSell Your Book</Link>
+                                    }      
+
                                     {
                                         currentUser==null&&signingLinks.map((item,idx)=>{
                                             return <Link key={idx} className="block hover:bg-[#8dc0ff98] duration-300 p-2 border-b-2 z-20" onClick={()=>setOpenModal(false)} to={item.href}>{item.title}
@@ -50,18 +52,19 @@ return (
                                             })
                                     }
 
-                            {localStorage.getItem("ThE_SeCrEt_ToKeN")?<Link  className="block hover:bg-[#8dc0ff98] duration-300 p-2 border-b-2 z-20" onClick={()=>setOpenModal(false)} to={"/dashboard"}>Dashboard
+                            {/* {localStorage.getItem("ThE_SeCrEt_ToKeN")?<Link  className="block hover:bg-[#8dc0ff98] duration-300 p-2 border-b-2 z-20" onClick={()=>setOpenModal(false)} to={"/dashboard"}>Dashboard
                             </Link>:
                                 <Link  className="block hover:bg-[#8dc0ff98] duration-300 p-2 border-b-2 z-20" onClick={()=>setOpenModal(false)} to={"/admin"}>Admin
                                 </Link>
                             
-                            }
+                            } */}
                         
                         {
                             currentUser !=null &&
                             <button  onClick={signOutUser} className="block hover:bg-[#ccc] duration-300 p-2 pr-8 w-full ml-2 " >Log Out</button>
 
                         }
+                        
 
                             
                 </div>

@@ -1,11 +1,12 @@
-import { Navigate, Outlet, useLocation } from "react-router-dom"
+import { Navigate, useLocation } from "react-router-dom"
 import { useAuth } from "../context/AuthUser"
+import Loading from "../components/loading"
 
 const PrivateRoute = ({children}) => {
   const {currentUser,loading} = useAuth()
-  const location = useLocation()
-  if(loading ==true) return<div>Loading ...</div>
-  return !currentUser ?<Navigate to={'/login'} state={{from:location}}/>:children
+
+if(loading ==true) return<div className="flex h-screen justify-center items-center"><Loading/></div>
+  return !currentUser ?<Navigate to={'/login'} />:children
 }
 
 export default PrivateRoute

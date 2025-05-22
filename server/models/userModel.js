@@ -8,22 +8,47 @@ const userSchema = new mongoose.Schema({
         maxLength:[25,"the username is too long please enter less charachters"],
         unique:[true,"Username must be unique"]
     },
+    fireBaseUid:{
+        type:String,
+        unique:true,
+        required:function(){
+            return this.role =="user"
+        }// only required if it is a normal user 
+    }
+    ,
+    email:{
+        type:String,
+
+    },
     password:{
         type:String,
         required:[true,"please enter your password "],
         minLength:[6,"please enter more than 6 characters"]
+        
     },
     role:{
         type:String,
         enum:["admin","user"],
-        required:[true,"please enter the role "],
+        default:"user"
 
     },
-    subscribe:{
+    subscription:{
         type:Boolean,
+        required:[true,'please subscribe first to sell your books'],
         default:false
-
+    },
+    expiration:{
+        type:Date,
+        default:null
     }
+    
+
+    // plans:{
+    //     type:String,
+    //     enum:["standard","premium","professional"]
+
+    // }
+  
 })
 
 userSchema.pre("save",async function (next) {
@@ -31,7 +56,6 @@ userSchema.pre("save",async function (next) {
         return next()
     }
     try {
-
         const salt = await genSalt(10)
         this.password =  await bcrypt.hash(this.password,salt)
         
@@ -42,6 +66,6 @@ userSchema.pre("save",async function (next) {
     }
 })
 
-const userModel = mongoose.model("user",userSchema)
+const userModel = mongoose.models.user || mongoose.model("user",userSchema)
 
 export default userModel

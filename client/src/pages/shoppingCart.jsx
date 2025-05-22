@@ -3,6 +3,7 @@ import { useSelector,useDispatch } from 'react-redux'
 
 import { clearItems, removeItem,increase, decrease } from '../redux/features/addCart'
 import {FaPlus,FaMinus} from "react-icons/fa"
+import VisaButton from '../components/visaButton'
 
 
 const ShoppingCart = () => {
@@ -45,9 +46,10 @@ const ShoppingCart = () => {
 
 
   return (
-    <>
-    <section className="shadow-lg w-9/12 p-3 mx-auto max-md:w-full">
-      <div className="header flex  justify-between font-primary items-center mb-10 ">
+    <main className='min-h-[60vh]'>
+    <section className={`shadow-lg w-9/12 p-3 mx-auto max-md:w-full   `}>
+
+      <div className="header flex  justify-between font-primary items-center mb-10  ">
         <h2 className="font-semibold text-xl">Shopping Cart</h2>
         <button 
           className={`bg-red-600 hover:bg-red-800
@@ -57,6 +59,7 @@ const ShoppingCart = () => {
             onClick={handleClear} >Clear Cart
         </button>
       </div>
+
       {
 
       cartItems.length>0 &&
@@ -73,9 +76,12 @@ const ShoppingCart = () => {
               <p className='text-slate-500 sm:mb-16 mb-8'>Category: <span className='text-black font-semibold text-[20px] '>{cart.category}</span></p>
               <div className='flex items-center gap-8'>
 
-                  <button onClick={()=>dispatch(increase(cart._id))} className='text-purple-600 
+                  <button onClick={()=>dispatch(increase(cart._id))} className='text-black 
                   bg-blue-200
                     rounded-xl 
+                    hover:text-white
+                    hover:bg-black
+                    transition
                     cursor-pointer 
                     size-12 flex 
                     justify-center 
@@ -86,7 +92,8 @@ const ShoppingCart = () => {
 
                   <p className='font-bold text-slate-600 text-xl my-3'>items: <span className='text-black'>{cart.count}</span></p>
 
-                  <button  onClick={()=>dispatch(decrease(cart._id))}  className='text-purple-600  bg-blue-200 rounded-xl  cursor-pointer size-12 flex justify-center items-center'><FaMinus className='size-8'/></button>
+                  <button  onClick={()=>dispatch(decrease(cart._id))}  className='text-black hover:text-white hover:bg-black
+                    transition bg-blue-200 rounded-xl  cursor-pointer size-12 flex justify-center items-center'><FaMinus className='size-8'/></button>
               </div>
 
             </div>
@@ -122,7 +129,12 @@ const ShoppingCart = () => {
 
         </div>
         <div className='checkout mt-5 text-center'>
-          <Link to={'/checkout'} className='bg-violet-600 hover:bg-violet-800 text-white px-4 py-2 rounded-md block w-full  text-xl mb-3'>CeckOut</Link>
+          
+          <div className="btns flex  justify-between items-center max-sm:flex-col">
+          <Link to={'/checkout'} className='bg-violet-600 hover:bg-violet-800 text-white px-4 py-2 rounded-md block w-1/2  text-xl mb-3'>Check Out</Link>
+          <VisaButton/>
+          </div>
+
 
           {cartItems.length>0&&
             <Link to={'/'} className='text-violet-600 px-4 py-2 rounded-md block w-full  text-xl'><span className='text-base text-black  mr-1'>or</span> Continue Shopping</Link>
@@ -134,7 +146,7 @@ const ShoppingCart = () => {
     </section>
     
 
-    </>
+    </main>
   )
 
 }
