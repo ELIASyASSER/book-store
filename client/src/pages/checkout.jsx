@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom"
 import "./checkout.css"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useSelector,useDispatch } from "react-redux"
 
 import {clearItems} from "../redux/features/addCart"
@@ -11,6 +11,7 @@ import {useCreateOrderMutation} from "../redux/features/orderApi"
 import Swal  from "sweetalert2"
 import Loading from "../components/loading"
 import { MdExitToApp } from "react-icons/md"
+import WalletPay from "./bookPayment/walletPayment"
 
 const CheckOut = () => {
     const navigate = useNavigate()
@@ -21,11 +22,13 @@ const CheckOut = () => {
         register,
         handleSubmit,
         formState: { errors },
-        watch
+        watch,
+    
     } = useForm({mode:"onChange"})
     const toggler = watch("terms")
     const {cartItems} = useSelector((state)=>state.shopping)
-
+    const [paymentMethod,setPaymentMethod] = useState("COD")
+    
     let orderd_books = cartItems.map((book)=>{
         return book._id;
     })
@@ -53,25 +56,26 @@ const CheckOut = () => {
 
     newPrice = newPrice.toFixed(2)
     const onSubmit = async(data) => {
-
+        console.log(data.payment)
+        if(data.payment ==="COD"){
         const placeanOrder = {
-            fullName:data.fullName,
-            email:data.email,
-
-            phone:data.phone,
-                price:newPrice,
-                orderdEmail:userDetails().email,
-
-                addressDetails:{
-                    fullAddress:data.fullAddress,
-                    city:data.city,
+            price:newPrice,
+            orderdEmail:userDetails().email,
+            
+            addressDetails:{
+                fullAddress:data.fullAddress,
+                city:data.city,
+                fullName:data.fullName,
+                email:data.email,
+                phone:data.phone,
 
                 },
                 orderData:orderd_books,
-                count:order_count
-            }
+                count:order_count,
+                paymentType:data.payment
+        }
 
-
+        
     try {
 
         await createOrder(placeanOrder).unwrap();
@@ -116,9 +120,30 @@ const CheckOut = () => {
         });
         
         // Optionally, handle errors (e.g., show error messages)
-    
-    }}
+    }
+        }
+        else{
+            const placeanOrder = {
+            price:newPrice,
+            orderdEmail:userDetails().email,
+            
+            addressDetails:{
+                fullAddress:data.fullAddress,
+                city:data.city,
+                fullName:data.fullName,
+                email:data.email,
+                phone:data.phone,
 
+                },
+                orderData:orderd_books,
+                count:order_count,
+                paymentType:data.payment
+        }
+
+            navigate("/walletPay",{state:{placeanOrder}})
+        } 
+
+      }
     // if(isError) return <div>Error please try again later</div>
     if(isLoading)return <Loading/>
     return (
@@ -173,6 +198,13 @@ const CheckOut = () => {
                         {errors.city && <span className="text-red-600">{errors.city.type =="required"?'please enter your city':'please enter valid city'}</span>
                         }
                     </div>
+                    <div>
+                        <label htmlFor="payment">Payment Method</label>
+                        <select name="payment" id="payment"  {...register("payment")} onChange={(e)=>setPaymentMethod(e.target.value)} className="font-bold outline-none border-2 border-gray-700 p-2">
+                            <option value="COD" >CASH ON DELIVERY</option>
+                            <option value="ONLINE" >PAY ONLINE </option>
+                        </select>
+                    </div>
                     <div className=" ml-[4%]">
                         
                     </div>
@@ -180,7 +212,7 @@ const CheckOut = () => {
                         <input type="checkbox" id="privacy"{...register("terms", { required: true })}  className="flex-1"/>
                         <label className="w-11/12  block" htmlFor="privacy">I agree to the <Link className="text-blue-600 font-bold underline">Terms &Conditions </Link>and <Link className="text-blue-600 font-bold underline">Privacy Policy</Link></label>
                     </div>
-                    <button type="submit"  className={` bg-blue-600 text-white px-3 py-2 rounded-md hover:bg-blue-900 text-lg mt-8 justify-self-end flex ${!toggler?"pointer-events-none opacity-30":""}`}>Place An Order</button>
+                    <button type="submit"  className={` bg-blue-600 text-white px-3 py-2 rounded-md hover:bg-blue-900 text-lg mt-8 justify-self-end flex ${!toggler?"pointer-events-none opacity-30":""} ${paymentMethod=="ONLINE"?'bg-green-500 font-bold hover:bg-green-700':""}`} >{paymentMethod=="COD"?"Pay for the Delivery":"Pay with Visa"}</button>
                 </div>
 
 

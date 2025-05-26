@@ -2,14 +2,16 @@ import {Outlet} from 'react-router-dom'
 import Header from './components/Home/header'
 import Footer from './components/Home/footer'
 import '../src/styles/App.css'
+import { AuthProvider } from './context/AuthUser'
 function App() {
   return (
+
     <main className='min-h-screen'>
-      <Header/>
-        <main className=' sm:w-[90%] mx-auto p-3 mt-10 '> 
-          <Outlet/>
-        </main>
-      <Footer/>
+          <Header/>
+            <main className=' sm:w-[90%] mx-auto p-3 mt-10 '> 
+              <Outlet/>
+            </main>
+          <Footer/>
     </main>
   )
 

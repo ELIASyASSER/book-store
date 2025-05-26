@@ -3,7 +3,6 @@ import { useSelector,useDispatch } from 'react-redux'
 
 import { clearItems, removeItem,increase, decrease } from '../redux/features/addCart'
 import {FaPlus,FaMinus} from "react-icons/fa"
-import VisaButton from '../components/visaButton'
 
 
 const ShoppingCart = () => {
@@ -130,10 +129,7 @@ const ShoppingCart = () => {
         </div>
         <div className='checkout mt-5 text-center'>
           
-          <div className="btns flex  justify-between items-center max-sm:flex-col">
           <Link to={'/checkout'} className='bg-violet-600 hover:bg-violet-800 text-white px-4 py-2 rounded-md block w-1/2  text-xl mb-3'>Check Out</Link>
-          <VisaButton/>
-          </div>
 
 
           {cartItems.length>0&&

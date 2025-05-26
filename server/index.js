@@ -12,8 +12,7 @@ import adminRoute from "./routers/adminLogin.js"
 import dashboard from "./routers/dashboard.js"
 import paymentRoute from "./routers/paymop.js"
 import checkSubscriptionRouter from "./routers/checkSubscription.js"
-
-
+import WalletPay from "./routers/walletPay.js"
 import connectDb from './db/books.js'
 import axios from "axios"
 import fs from "fs"
@@ -99,6 +98,9 @@ app.use("/orders",ordersRouter)
 app.use("/admin",adminRoute)
 app.use("/checkSubscription",checkSubscriptionRouter)
 app.use("/dashboard",dashboard)
+
+// pay with wallet 
+app.use("/mobile",WalletPay)
 
 
 //errors handler middlewares 

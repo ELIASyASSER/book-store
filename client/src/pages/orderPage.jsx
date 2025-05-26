@@ -7,6 +7,7 @@ import Loading from '../components/loading'
 const OrderPage = () => {
     const {orderEmail} = useParams()
     const {isError,isLoading,data} = useGetOrderByEmailQuery(orderEmail)
+    console.log(data)
 
     const [success,setSuccess] = useState(false)
     const orderId = useRef(null)
@@ -40,20 +41,21 @@ const OrderPage = () => {
 
             {data.map((item,idx)=>{
                 const {orderData }= item
-                console.log(item.count)
                 const amount = item.count;
+                
                 const date = new Date(item?.createdAt).toLocaleDateString()
                 return <div key={idx} className="mb-8 overflow-hidden"> 
                     <div>
 
                     <div className='font-bold rounded-lg mb-4 bg-black p-2 text-white   '>#############</div>
-                        <p className='mb-8'>fullName: <span>{item?.fullName}</span></p>
-                        <p className='mb-8'>Email: <span>{item?.email}</span></p>
+                        <p className='mb-8'>fullName: <span>{item.addressDetails.fullName}</span></p>
+                        <p className='mb-8'>Email: <span>{item.addressDetails.email}</span></p>
                         <p className='mb-8'>Total Price $<span>{item?.price}</span></p>
-                        <p className='mb-8'>phone Number: <span className='tracking-widest'>{item?.phone}</span></p>
+                        <p className='mb-8'>PayMent Type<span>{item.paymentType}</span></p>
+                        <p className='mb-8'>phone Number: <span className='tracking-widest'>{item.addressDetails.phone}</span></p>
                         <time className='mb-8 block'>Date Of Order: <span>{date}</span></time>
-                        <address className='mb-8'>city: <span>{item?.addressDetails?.city}</span></address>
-                        <address className='mb-8'>FullAddress <span >{item?.addressDetails?.fullAddress}</span></address>
+                        <address className='mb-8'>city: <span>{item.addressDetails.city}</span></address>
+                        <address className='mb-8'>FullAddress <span >{item.addressDetails.fullAddress}</span></address>
                     </div> 
 
                 {orderData.map((book,idx)=>{

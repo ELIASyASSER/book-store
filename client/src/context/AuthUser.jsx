@@ -4,6 +4,7 @@ import { auth } from '../firebase/main.config';
 import { GoogleAuthProvider } from "firebase/auth";
 import axios from "axios"
 import Swal from 'sweetalert2';
+import {useNavigate} from "react-router-dom"
 axios.defaults.withCredentials = true;
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL
@@ -11,13 +12,15 @@ const AuthContext = createContext()
 const provider = new GoogleAuthProvider();
 export const AuthProvider = ({children})=>{
 
-
     const [loading,setLoading] = useState(true)
     const [isSubscribe,setIsSubscribe] = useState(true)
     const[currentUser,setCurrentUser] = useState(null)
     const [profileImg,setProfileImg] = useState(null)
     const [isAdmin,setIsAdmin] = useState(false)
-
+    const navigate = useNavigate()
+   
+   
+    
     const registerUser = async(email,password)=>{
         return await createUserWithEmailAndPassword(auth, email, password)
     }
@@ -117,7 +120,7 @@ export const AuthProvider = ({children})=>{
 useEffect(()=>{
        const adminStatus = async()=>{
                try {
-                   const isAdmin = await fetch(`${SERVER_URL}/admin/is-auth`,{
+                const isAdmin = await fetch(`${SERVER_URL}/admin/is-auth`,{
                        credentials:"include"
                    })
                    const data = await isAdmin.json()
@@ -137,7 +140,7 @@ useEffect(()=>{
                          icon: "error",
                          title: "Oops...",
                          text: error.message || `Something went wrong. Try again.`,
-                       });
+                       }); 
                        navigate("/admin")
                    
                }
@@ -145,8 +148,7 @@ useEffect(()=>{
        
               adminStatus();
        
-       },[])
-
+       },[navigate])
 
 
 
@@ -165,8 +167,10 @@ useEffect(()=>{
         setIsSubscribe,
         profileImg,
         loading,
+        setLoading,
         isAdmin,
-        setIsAdmin
+        setIsAdmin,
+        axios
 
     }
     

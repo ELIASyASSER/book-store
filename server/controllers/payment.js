@@ -3,6 +3,7 @@
 import {v4 as uuidv4} from "uuid"
 import axios from "axios";
 import  User from "../models/userModel.js"
+
 const API_KEY = process.env.PAYMENT_API_KEY;
 const INTEGRATION_ID = process.env.PAYMENT_INTEGRATION_ID;
 
@@ -28,7 +29,7 @@ export const createVisaPayment = async (req, res) => {
 
 
     // Step 1: Get Auth Token
-    const authRes = await axios.post("https://accept.paymob.com/api/auth/tokens", {
+    const authRes = await axios.post(process.env.TOKEN_URL, {
       api_key: API_KEY,
     });
     const token = authRes.data.token;
@@ -96,7 +97,7 @@ const PAYMOB_API_KEY = process.env.PAYMENT_API_KEY;
 
 
   try {
-    const authRes = await axios.post("https://accept.paymob.com/api/auth/tokens", {
+    const authRes = await axios.post(process.env.TOKEN_URL, {
       api_key: PAYMOB_API_KEY
     });
 
@@ -114,7 +115,6 @@ const PAYMOB_API_KEY = process.env.PAYMENT_API_KEY;
     const priceFromMerchantId = orderData.data.merchant_order_id
     const expectedPrice = parseInt(priceFromMerchantId.split("_")[1])
     const id = orderData.data.merchant_order_id.split("_")[2]
-    console.log(id,'id')
 
     if (transaction.success && transaction.amount_cents >= expectedPrice) {
 

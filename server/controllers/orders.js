@@ -20,7 +20,7 @@ const getOrder = async(req,res,next)=>{
     const {email} = req.params
     
     try {
-        const orders = await ordersModel.find({orderdEmail:email}).populate("orderData");
+        const orders = await ordersModel.find({orderdEmail:email}).populate("orderData").sort({createdAt:-1});
         
             res.status(200).json(orders)
 

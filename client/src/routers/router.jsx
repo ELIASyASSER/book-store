@@ -18,6 +18,9 @@ import PaymentResult from '../pages/visapayment/paymentResult'
 import CheckSubscription from './checkSubscription'
 import AdminLayout from '../pages/admin/adminLayout'
 import AdminPublicRoute from './adminPublic'
+import { AuthProvider } from '../context/AuthUser'
+import WalletPay from '../pages/bookPayment/walletPayment'
+import BookPaymentResult from '../pages/visapayment/bookPaymentRes'
 
 
 const router = createBrowserRouter([
@@ -25,9 +28,12 @@ const router = createBrowserRouter([
 
     {
         path:"/",
-        element:<App/>,
+        element:<AuthProvider>
+            <App/>
+        </AuthProvider>,
         children:[
             {
+                index:true,
                 path:"",
                 element:<Home/>
             },
@@ -36,11 +42,23 @@ const router = createBrowserRouter([
                 element:<PrivateRoute>
                     <PaymentResult/>
                 </PrivateRoute>
+        },
+            {
+                path:"/book-payment-result",
+                element:<PrivateRoute>
+                    <BookPaymentResult/>
+                </PrivateRoute>
             },
                 {
                 path:"/pricing",
                 element:<PrivateRoute>
                     <PricingPage/>
+                </PrivateRoute>
+                },
+                {
+                    path:"/walletPay",
+                element:<PrivateRoute>
+                    <WalletPay/>
                 </PrivateRoute>
                 }
             ,
@@ -123,7 +141,10 @@ const router = createBrowserRouter([
     },
     {
         path:"/admin",
-        element:<AdminPublicRoute/>
+
+        element:<AuthProvider>
+            <AdminPublicRoute/>
+        </AuthProvider>
 
     },
 
