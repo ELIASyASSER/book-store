@@ -48,7 +48,7 @@ async function getPaymentKey(token, orderId, amountCents, phoneNumber, addressDe
     integration_id: WALLET_INTEGRATION_ID,
     expiration: 3600,
     items: [],
-    redirect_url: "http://localhost:5173/book-payment-result",
+    redirect_url: `${process.env.CLIENT_PRODUCTION_URL}/book-payment-result`,
   });
   return res.data.token;
 }
