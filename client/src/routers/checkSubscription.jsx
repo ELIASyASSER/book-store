@@ -44,7 +44,7 @@ const CheckSubscription = ({children}) => {
                     showConfirmButton: false,
                     timer: 5500
                      });
-
+                     
                      navigate("/pricing")
 
             }else{

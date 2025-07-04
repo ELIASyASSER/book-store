@@ -17,7 +17,7 @@ const AdminLayout = () => {
                 </div>
             </div>
 
-        <DahboardBody/>            
+        <DahboardBody/>
         </>
     );
 };

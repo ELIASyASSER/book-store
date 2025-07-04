@@ -62,6 +62,7 @@ export const AuthProvider = ({children})=>{
 
         const user = auth.currentUser;
         if (user !== null) {
+            
             // The user object has basic properties such as display name, email, etc.
             // const displayName = user.displayName;
 
@@ -121,7 +122,7 @@ useEffect(()=>{
        const adminStatus = async()=>{
                try {
                 const isAdmin = await fetch(`${SERVER_URL}/admin/is-auth`,{
-                       credentials:"include"
+                    credentials:"include"
                    })
                    const data = await isAdmin.json()
                    setIsAdmin(data.success)

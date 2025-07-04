@@ -11,19 +11,19 @@ asynchronous data in Redux applications by providing a streamlined way to fetch,
 
 ## Table Of Contents
 
-  - [Book Store](#Book-Store)
-  - [Description](#description)
+- [Book-Store](#book-store)
+  - [Description:](#description)
   - [Table Of Contents](#table-of-contents)
   - [Installation-and-Usage](#installation-and-usage)
   - [Used-Techs](#used-techs)
-  - [Contribution](#contribution)
+    - [Contribution](#contribution)
 
 ## Installation-and-Usage
 
 To get the project up and running locally:
 1. Install [Node.js](https://nodejs.org/en/)
 
-2. clone this repository by running in your cmd `https://github.com/ELIASyASSER/book-store.git`
+2. clone this repository by running in your cmd `git clone https://github.com/ELIASyASSER/book-store.git`
   
 3. now you will find two directories `client` and `server` split your terminal and run `cd client` and in  second terminal run `cd server` now run `npm install` in both of `client and server directories`
 
