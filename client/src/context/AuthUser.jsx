@@ -4,7 +4,7 @@ import { auth } from '../firebase/main.config';
 import { GoogleAuthProvider } from "firebase/auth";
 import axios from "axios"
 import Swal from 'sweetalert2';
-import {useNavigate} from "react-router-dom"
+import {useLocation, useNavigate} from "react-router-dom"
 axios.defaults.withCredentials = true;
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL
@@ -18,7 +18,7 @@ export const AuthProvider = ({children})=>{
     const [profileImg,setProfileImg] = useState(null)
     const [isAdmin,setIsAdmin] = useState(false)
     const navigate = useNavigate()
-   
+    const currentPath = useLocation()
    
     
     const registerUser = async(email,password)=>{
@@ -119,24 +119,25 @@ export const AuthProvider = ({children})=>{
 
 
 useEffect(()=>{
-       const adminStatus = async()=>{
+       
+        const adminStatus = async()=>{
                try {
-                const isAdmin = await fetch(`${SERVER_URL}/admin/is-auth`,{
+                const response = await fetch(`${SERVER_URL}/admin/is-auth`,{
                     credentials:"include"
                    })
-                   const data = await isAdmin.json()
+                   const data = await response.json()
                    setIsAdmin(data.success)
                    if(!data.success){
                     Swal.fire({
                           icon: "error",
                           title: "Oops...",
-                          text: data.message || `Something went wrong. Try again.`,
+                          text: data.message || `Please login as admin`,
                         });
                         navigate("/admin")
                    }
 
                } catch (error) {
-
+                console.log(error)
                    Swal.fire({
                          icon: "error",
                          title: "Oops...",
@@ -145,15 +146,12 @@ useEffect(()=>{
                        navigate("/admin")
                    
                }
-              }
-       
-              adminStatus();
+             }
+                if(currentPath.pathname.includes("admin")){
+                    adminStatus();
+                }
        
        },[navigate])
-
-
-
-
 
 
 
